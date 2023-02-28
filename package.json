@@ -15,7 +15,7 @@
     "build": "npm run clean && npm run build:commonjs && npm run build:module && npm run build:typescript",
     "clean": "del lib",
     "test": "jest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run test && npm run build"
   },
   "files": [
     "src",
