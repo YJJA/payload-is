@@ -23,14 +23,8 @@
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -44,7 +38,7 @@
 npm install payload-is
 ```
 
-## Usage
+## Usage <a name = "usage"></a>
 
 ```js
 import { isObject, isPlainObject } from "payload-is";
