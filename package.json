@@ -29,7 +29,7 @@
     "isObject",
     "isPlainObject"
   ],
-  "author": "YJJA",
+  "homepage": "https://github.com/YJJA/payload-is.git#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/YJJA/payload-is.git"
@@ -37,7 +37,10 @@
   "bugs": {
     "url": "https://github.com/YJJA/payload-is.git/issues"
   },
-  "homepage": "https://github.com/YJJA/payload-is.git#readme",
+  "author": {
+    "name": "Liu Hong",
+    "email": "hongdoit@icloud.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
