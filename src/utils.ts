@@ -6,7 +6,7 @@ export function getType(payload: unknown): string {
 }
 
 export function isType<T extends AnyFunction | AnyClass>(
-  payload: any,
+  payload: unknown,
   type: T
 ): payload is T {
   if (!(type instanceof Function)) {
