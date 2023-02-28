@@ -1,6 +1,6 @@
 {
   "name": "payload-is",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "javascript data check, supported typescript",
   "type": "module",
   "main": "lib/commonjs/index.js",
