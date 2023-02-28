@@ -7,6 +7,7 @@
   "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
   "source": "src/index.ts",
+  "react-native": "src/index.ts",
   "scripts": {
     "build:commonjs": "tsc -p tsconfig.build.json --outDir lib/commonjs --declaration false",
     "build:module": "tsc -p tsconfig.build.json -m esNext --outDir lib/module --declaration false",
@@ -18,7 +19,9 @@
   },
   "files": [
     "src",
-    "lib"
+    "lib",
+    "!**/__tests__",
+    "!**/__test_utils__"
   ],
   "keywords": [
     "javascript type check",
@@ -31,6 +34,10 @@
     "type": "git",
     "url": "https://github.com/YJJA/payload-is.git"
   },
+  "bugs": {
+    "url": "https://github.com/YJJA/payload-is.git/issues"
+  },
+  "homepage": "https://github.com/YJJA/payload-is.git#readme",
   "license": "MIT",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
