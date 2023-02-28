@@ -13,7 +13,8 @@
     "build:typescript": "tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --outDir lib/typescript",
     "build": "npm run clean && npm run build:commonjs && npm run build:module && npm run build:typescript",
     "clean": "del lib",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "yarn build"
   },
   "files": [
     "src",
@@ -26,6 +27,10 @@
     "isPlainObject"
   ],
   "author": "YJJA",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YJJA/payload-is.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
