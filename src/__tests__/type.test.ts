@@ -1,4 +1,4 @@
-import { getType } from "../utils.js";
+import { getType } from "../type.js";
 
 describe("utils", () => {
   test("getType", () => {

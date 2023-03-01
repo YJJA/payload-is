@@ -1,7 +1,7 @@
 // symbol
 
-import { isObject } from "./object";
-import { getType } from "./utils";
+import { isObject } from "./object.js";
+import { getType } from "./type.js";
 
 export function isSymbol(payload: unknown): payload is symbol {
   return typeof payload === "symbol";

@@ -63,4 +63,4 @@ export {
   isStringObject,
 } from "./string.js";
 export { isSymbol, isSymbolObject } from "./symbol.js";
-export { getType, isType } from "./utils.js";
+export { getType } from "./type.js";

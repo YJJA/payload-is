@@ -1,4 +1,4 @@
-import { getType } from "./utils.js";
+import { getType } from "./type.js";
 import type { AnyAsyncFunction, AnyFunction } from "./type";
 
 // function

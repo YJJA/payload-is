@@ -1,6 +1,6 @@
 import { isFunction } from "./function.js";
 import { isObject } from "./object.js";
-import { getType } from "./utils.js";
+import { getType } from "./type.js";
 
 // promise
 export function isPromise(payload: unknown): payload is Promise<any> {
