@@ -1,30 +1,22 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isAsyncGenerator, isGenerator } from "../generator.js";
 
 describe("generator", () => {
-  test("isGenerator", () => {
+  test.each(TestDataKeys)("isGenerator: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Generator"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isGenerator(value)).toBeTruthy();
-      } else {
-        expect(isGenerator(value)).toBeFalsy();
-      }
-    });
+    expect(isGenerator(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isAsyncGenerator", () => {
+  test.each(TestDataKeys)("isAsyncGenerator: %s", (key) => {
     const trueKeys: TestDataKey[] = ["AsyncGenerator"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isAsyncGenerator(value)).toBeTruthy();
-      } else {
-        expect(isAsyncGenerator(value)).toBeFalsy();
-      }
-    });
+    expect(isAsyncGenerator(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

@@ -1,4 +1,8 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import {
   isArrayBuffer,
   isSharedArrayBuffer,
@@ -19,202 +23,117 @@ import {
 } from "../buffer.js";
 
 describe("buffer", () => {
-  test("isArrayBuffer", () => {
+  test.each(TestDataKeys)("isArrayBuffer: %s", (key) => {
     const trueKeys: TestDataKey[] = ["ArrayBuffer"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isArrayBuffer(value)).toBeTruthy();
-      } else {
-        expect(isArrayBuffer(value)).toBeFalsy();
-      }
-    });
+    expect(isArrayBuffer(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isSharedArrayBuffer", () => {
+  test.each(TestDataKeys)("isSharedArrayBuffer: %s", (key) => {
     const trueKeys: TestDataKey[] = ["SharedArrayBuffer"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isSharedArrayBuffer(value)).toBeTruthy();
-      } else {
-        expect(isSharedArrayBuffer(value)).toBeFalsy();
-      }
-    });
+    expect(isSharedArrayBuffer(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isArrayBufferLike", () => {
+  test.each(TestDataKeys)("isArrayBufferLike: %s", (key) => {
     const trueKeys: TestDataKey[] = ["ArrayBuffer", "SharedArrayBuffer"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isArrayBufferLike(value)).toBeTruthy();
-      } else {
-        expect(isArrayBufferLike(value)).toBeFalsy();
-      }
-    });
+    expect(isArrayBufferLike(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isDataView", () => {
+  test.each(TestDataKeys)("isDataView: %s", (key) => {
     const trueKeys: TestDataKey[] = ["DataView"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isDataView(value)).toBeTruthy();
-      } else {
-        expect(isDataView(value)).toBeFalsy();
-      }
-    });
+    expect(isDataView(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isInt8Array", () => {
+  test.each(TestDataKeys)("isInt8Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Int8Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isInt8Array(value)).toBeTruthy();
-      } else {
-        expect(isInt8Array(value)).toBeFalsy();
-      }
-    });
+    expect(isInt8Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isUint8Array", () => {
+  test.each(TestDataKeys)("isUint8Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Uint8Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isUint8Array(value)).toBeTruthy();
-      } else {
-        expect(isUint8Array(value)).toBeFalsy();
-      }
-    });
+    expect(isUint8Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isUint8ClampedArray", () => {
+  test.each(TestDataKeys)("isUint8ClampedArray: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Uint8ClampedArray"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isUint8ClampedArray(value)).toBeTruthy();
-      } else {
-        expect(isUint8ClampedArray(value)).toBeFalsy();
-      }
-    });
+    expect(isUint8ClampedArray(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isInt16Array", () => {
+  test.each(TestDataKeys)("isInt16Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Int16Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isInt16Array(value)).toBeTruthy();
-      } else {
-        expect(isInt16Array(value)).toBeFalsy();
-      }
-    });
+    expect(isInt16Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isUint16Array", () => {
+  test.each(TestDataKeys)("isUint16Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Uint16Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isUint16Array(value)).toBeTruthy();
-      } else {
-        expect(isUint16Array(value)).toBeFalsy();
-      }
-    });
+    expect(isUint16Array(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isInt32Array", () => {
+  test.each(TestDataKeys)("isInt32Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Int32Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isInt32Array(value)).toBeTruthy();
-      } else {
-        expect(isInt32Array(value)).toBeFalsy();
-      }
-    });
+    expect(isInt32Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isUint32Array", () => {
+  test.each(TestDataKeys)("isUint32Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Uint32Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isUint32Array(value)).toBeTruthy();
-      } else {
-        expect(isUint32Array(value)).toBeFalsy();
-      }
-    });
+    expect(isUint32Array(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isFloat32Array", () => {
+  test.each(TestDataKeys)("isFloat32Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Float32Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isFloat32Array(value)).toBeTruthy();
-      } else {
-        expect(isFloat32Array(value)).toBeFalsy();
-      }
-    });
+    expect(isFloat32Array(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isFloat64Array", () => {
+  test.each(TestDataKeys)("isFloat64Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Float64Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isFloat64Array(value)).toBeTruthy();
-      } else {
-        expect(isFloat64Array(value)).toBeFalsy();
-      }
-    });
+    expect(isFloat64Array(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isBigInt64Array", () => {
+  test.each(TestDataKeys)("isBigInt64Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["BigInt64Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isBigInt64Array(value)).toBeTruthy();
-      } else {
-        expect(isBigInt64Array(value)).toBeFalsy();
-      }
-    });
+    expect(isBigInt64Array(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isBigUint64Array", () => {
+  test.each(TestDataKeys)("isBigUint64Array: %s", (key) => {
     const trueKeys: TestDataKey[] = ["BigUint64Array"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isBigUint64Array(value)).toBeTruthy();
-      } else {
-        expect(isBigUint64Array(value)).toBeFalsy();
-      }
-    });
+    expect(isBigUint64Array(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isTypedArray", () => {
+  test.each(TestDataKeys)("isTypedArray: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "Int8Array",
       "Uint8Array",
@@ -229,13 +148,6 @@ describe("buffer", () => {
       "BigUint64Array",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isTypedArray(value)).toBeTruthy();
-      } else {
-        expect(isTypedArray(value)).toBeFalsy();
-      }
-    });
+    expect(isTypedArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 });

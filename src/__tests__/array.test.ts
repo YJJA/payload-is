@@ -1,8 +1,12 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isArray, isEmptyArray, isFullArray } from "../array.js";
 
 describe("array", () => {
-  test("isArray", () => {
+  test.each(TestDataKeys)("isArray: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "emptyArray",
       "prototypeArray",
@@ -19,17 +23,10 @@ describe("array", () => {
       "stringNewMoreArray",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isArray(value)).toBeTruthy();
-      } else {
-        expect(isArray(value)).toBeFalsy();
-      }
-    });
+    expect(isArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isEmptyArray", () => {
+  test.each(TestDataKeys)("isEmptyArray: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "emptyArray",
       "prototypeArray",
@@ -37,17 +34,10 @@ describe("array", () => {
       "emptyZeroArray",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isEmptyArray(value)).toBeTruthy();
-      } else {
-        expect(isEmptyArray(value)).toBeFalsy();
-      }
-    });
+    expect(isEmptyArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isFullArray", () => {
+  test.each(TestDataKeys)("isFullArray: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "numberArray",
       "stringArray",
@@ -60,13 +50,6 @@ describe("array", () => {
       "stringNewMoreArray",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isFullArray(value)).toBeTruthy();
-      } else {
-        expect(isFullArray(value)).toBeFalsy();
-      }
-    });
+    expect(isFullArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 });

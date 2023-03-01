@@ -1,56 +1,38 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isBoolen, isBooleanObject, isTrue, isFalse } from "../boolean.js";
 
 describe("boolean", () => {
-  test("isBoolen", () => {
+  test.each(TestDataKeys)("isBoolen: %s", (key) => {
     const trueKeys: TestDataKey[] = ["true", "false"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isBoolen(value)).toBeTruthy();
-      } else {
-        expect(isBoolen(value)).toBeFalsy();
-      }
-    });
+    expect(isBoolen(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isTrue", () => {
+  test.each(TestDataKeys)("isTrue: %s", (key) => {
     const trueKeys: TestDataKey[] = ["true"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isTrue(value)).toBeTruthy();
-      } else {
-        expect(isTrue(value)).toBeFalsy();
-      }
-    });
+    expect(isTrue(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isFalse", () => {
+  test.each(TestDataKeys)("isFalse: %s", (key) => {
     const trueKeys: TestDataKey[] = ["false"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isFalse(value)).toBeTruthy();
-      } else {
-        expect(isFalse(value)).toBeFalsy();
-      }
-    });
+    expect(isFalse(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isBooleanObject", () => {
-    const trueKeys: TestDataKey[] = ["trueObject", "falseObject"];
+  test.each(TestDataKeys)("isBooleanObject: %s", (key) => {
+    const trueKeys: TestDataKey[] = [
+      "booleanObject",
+      "boolean2Object",
+      "boolean3Object",
+    ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isBooleanObject(value)).toBeTruthy();
-      } else {
-        expect(isBooleanObject(value)).toBeFalsy();
-      }
-    });
+    expect(isBooleanObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

@@ -1,43 +1,26 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isNil, isNull, isUndefined } from "../nil.js";
 
 describe("nil", () => {
-  test("isUndefined", () => {
+  test.each(TestDataKeys)("isUndefined: %s", (key) => {
     const trueKeys: TestDataKey[] = ["undefined"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isUndefined(value)).toBeTruthy();
-      } else {
-        expect(isUndefined(value)).toBeFalsy();
-      }
-    });
+    expect(isUndefined(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isNull", () => {
+  test.each(TestDataKeys)("isNull: %s", (key) => {
     const trueKeys: TestDataKey[] = ["null"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isNull(value)).toBeTruthy();
-      } else {
-        expect(isNull(value)).toBeFalsy();
-      }
-    });
+    expect(isNull(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isNil", () => {
+  test.each(TestDataKeys)("isNil: %s", (key) => {
     const trueKeys: TestDataKey[] = ["undefined", "null"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isNil(value)).toBeTruthy();
-      } else {
-        expect(isNil(value)).toBeFalsy();
-      }
-    });
+    expect(isNil(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 });

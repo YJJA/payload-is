@@ -1,30 +1,22 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isBigInt, isBigIntObject } from "../bigint.js";
 
 describe("bigint", () => {
-  test("isBigInt", () => {
-    const trueKeys: TestDataKey[] = ["bigint"];
+  test.each(TestDataKeys)("isBigInt: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["bigint", "bigint2"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isBigInt(value)).toBeTruthy();
-      } else {
-        expect(isBigInt(value)).toBeFalsy();
-      }
-    });
+    expect(isBigInt(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isBigIntObject", () => {
-    const trueKeys: TestDataKey[] = ["bigintObject"];
+  test.each(TestDataKeys)("isBigIntObject: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["bigintObject", "bigint2Object"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isBigIntObject(value)).toBeTruthy();
-      } else {
-        expect(isBigIntObject(value)).toBeFalsy();
-      }
-    });
+    expect(isBigIntObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

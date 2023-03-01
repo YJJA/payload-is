@@ -1,30 +1,22 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isSymbol, isSymbolObject } from "../symbol.js";
 
 describe("symbol", () => {
-  test("isSymbol", () => {
-    const trueKeys: TestDataKey[] = ["defaultSymbol", "descSymbol"];
+  test.each(TestDataKeys)("isSymbol: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["symbol", "descSymbol"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isSymbol(value)).toBeTruthy();
-      } else {
-        expect(isSymbol(value)).toBeFalsy();
-      }
-    });
+    expect(isSymbol(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isSymbolObject", () => {
-    const trueKeys: TestDataKey[] = ["symbolObject"];
+  test.each(TestDataKeys)("isSymbolObject: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["symbolObject", "symbol2Object"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isSymbolObject(value)).toBeTruthy();
-      } else {
-        expect(isSymbolObject(value)).toBeFalsy();
-      }
-    });
+    expect(isSymbolObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

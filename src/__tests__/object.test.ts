@@ -1,4 +1,8 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import {
   isEmptyObject,
   isFullObject,
@@ -7,23 +11,30 @@ import {
 } from "../object.js";
 
 describe("object", () => {
-  test("isObject", () => {
+  test.each(TestDataKeys)("isObject: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       // string
-      "stringObejct",
+      "stringObject",
+      "string2Object",
+      "string3Object",
 
       // nnumber
       "numberObject",
+      "number2Object",
+      "number3Object",
+
+      // boolean
+      "booleanObject",
+      "boolean2Object",
+      "boolean3Object",
 
       // bigint
       "bigintObject",
-
-      // boolean
-      "trueObject",
-      "falseObject",
+      "bigint2Object",
 
       // symbol
       "symbolObject",
+      "symbol2Object",
 
       // array
       "emptyArray",
@@ -49,12 +60,12 @@ describe("object", () => {
       "emptyNumberObject",
       "emptyStringObject",
       "constructorObject",
-      "myClassObject",
+      "customClassObject",
 
       // date
       "nowDate",
       "invalidDate",
-      "formatData",
+      "formatDate",
 
       // promise
       "loadingPromise",
@@ -112,17 +123,10 @@ describe("object", () => {
       "File",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isObject(value)).toBeTruthy();
-      } else {
-        expect(isObject(value)).toBeFalsy();
-      }
-    });
+    expect(isObject(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isPlainObject", () => {
+  test.each(TestDataKeys)("isPlainObject: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       // object
       "emptyObject",
@@ -137,17 +141,12 @@ describe("object", () => {
       "promiseLike",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isPlainObject(value)).toBeTruthy();
-      } else {
-        expect(isPlainObject(value)).toBeFalsy();
-      }
-    });
+    expect(isPlainObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isEmptyObject", () => {
+  test.each(TestDataKeys)("isEmptyObject: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       // object
       "emptyObject",
@@ -156,23 +155,15 @@ describe("object", () => {
       "newEmptyObject",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isEmptyObject(value)).toBeTruthy();
-      } else {
-        expect(isEmptyObject(value)).toBeFalsy();
-      }
-    });
+    expect(isEmptyObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isFullObject", () => {
+  test.each(TestDataKeys)("isFullObject: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       // object
       "fullObject",
-      // "newObject",
-      // "nullObject",
-      // "newEmptyObject",
       "emptyNumberObject",
       "emptyStringObject",
 
@@ -180,13 +171,6 @@ describe("object", () => {
       "promiseLike",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isFullObject(value)).toBeTruthy();
-      } else {
-        expect(isFullObject(value)).toBeFalsy();
-      }
-    });
+    expect(isFullObject(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 });

@@ -1,4 +1,8 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import {
   isSet,
   isMap,
@@ -8,68 +12,33 @@ import {
 } from "../collection.js";
 
 describe("collection", () => {
-  test("isSet", () => {
+  test.each(TestDataKeys)("isSet: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Set"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isSet(value)).toBeTruthy();
-      } else {
-        expect(isSet(value)).toBeFalsy();
-      }
-    });
+    expect(isSet(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isWeakSet", () => {
+  test.each(TestDataKeys)("isWeakSet: %s", (key) => {
     const trueKeys: TestDataKey[] = ["WeakSet"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isWeakSet(value)).toBeTruthy();
-      } else {
-        expect(isWeakSet(value)).toBeFalsy();
-      }
-    });
+    expect(isWeakSet(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isMap", () => {
+  test.each(TestDataKeys)("isMap: %s", (key) => {
     const trueKeys: TestDataKey[] = ["Map"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isMap(value)).toBeTruthy();
-      } else {
-        expect(isMap(value)).toBeFalsy();
-      }
-    });
+    expect(isMap(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isWeakMap", () => {
+  test.each(TestDataKeys)("isWeakMap: %s", (key) => {
     const trueKeys: TestDataKey[] = ["WeakMap"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isWeakMap(value)).toBeTruthy();
-      } else {
-        expect(isWeakMap(value)).toBeFalsy();
-      }
-    });
+    expect(isWeakMap(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isWeakRef", () => {
+  test.each(TestDataKeys)("isWeakRef: %s", (key) => {
     const trueKeys: TestDataKey[] = ["WeakRef"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isWeakRef(value)).toBeTruthy();
-      } else {
-        expect(isWeakRef(value)).toBeFalsy();
-      }
-    });
+    expect(isWeakRef(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 });

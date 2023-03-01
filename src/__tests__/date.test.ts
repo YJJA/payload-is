@@ -1,43 +1,28 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isDate, isInvalidDate, isValidDate } from "../date.js";
 
 describe("date", () => {
-  test("isDate", () => {
-    const trueKeys: TestDataKey[] = ["nowDate", "invalidDate", "formatData"];
+  test.each(TestDataKeys)("isDate: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["nowDate", "invalidDate", "formatDate"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isDate(value)).toBeTruthy();
-      } else {
-        expect(isDate(value)).toBeFalsy();
-      }
-    });
+    expect(isDate(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isValidDate", () => {
-    const trueKeys: TestDataKey[] = ["nowDate", "formatData"];
+  test.each(TestDataKeys)("isValidDate: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["nowDate", "formatDate"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isValidDate(value)).toBeTruthy();
-      } else {
-        expect(isValidDate(value)).toBeFalsy();
-      }
-    });
+    expect(isValidDate(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isInvalidDate", () => {
+  test.each(TestDataKeys)("isInvalidDate: %s", (key) => {
     const trueKeys: TestDataKey[] = ["invalidDate"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isInvalidDate(value)).toBeTruthy();
-      } else {
-        expect(isInvalidDate(value)).toBeFalsy();
-      }
-    });
+    expect(isInvalidDate(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

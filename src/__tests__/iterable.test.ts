@@ -1,11 +1,17 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import { isAsyncIterable, isIterable } from "../iterable.js";
 
 describe("iterable", () => {
-  test("isIterable", () => {
+  test.each(TestDataKeys)("isIterable: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       // string
-      "stringObejct",
+      "stringObject",
+      "string2Object",
+      "string3Object",
 
       // array
       "emptyArray",
@@ -43,26 +49,14 @@ describe("iterable", () => {
       "BigUint64Array",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isIterable(value)).toBeTruthy();
-      } else {
-        expect(isIterable(value)).toBeFalsy();
-      }
-    });
+    expect(isIterable(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isAsyncIterable", () => {
+  test.each(TestDataKeys)("isAsyncIterable: %s", (key) => {
     const trueKeys: TestDataKey[] = ["AsyncGenerator"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isAsyncIterable(value)).toBeTruthy();
-      } else {
-        expect(isAsyncIterable(value)).toBeFalsy();
-      }
-    });
+    expect(isAsyncIterable(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

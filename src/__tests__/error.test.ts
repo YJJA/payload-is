@@ -1,4 +1,8 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import {
   isError,
   isEvalError,
@@ -11,7 +15,7 @@ import {
 } from "../error.js";
 
 describe("error", () => {
-  test("isError", () => {
+  test.each(TestDataKeys)("isError: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "Error",
       "CustomError",
@@ -23,89 +27,50 @@ describe("error", () => {
       "URIError",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isError(value)).toBeTruthy();
-      } else {
-        expect(isError(value)).toBeFalsy();
-      }
-    });
+    expect(isError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isEvalError", () => {
+  test.each(TestDataKeys)("isEvalError: %s", (key) => {
     const trueKeys: TestDataKey[] = ["EvalError"];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isEvalError(value)).toBeTruthy();
-      } else {
-        expect(isEvalError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isEvalError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isRangeError", () => {
+  test.each(TestDataKeys)("isRangeError: %s", (key) => {
     const trueKeys: TestDataKey[] = ["RangeError"];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isRangeError(value)).toBeTruthy();
-      } else {
-        expect(isRangeError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isRangeError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isReferenceError", () => {
+  test.each(TestDataKeys)("isReferenceError: %s", (key) => {
     const trueKeys: TestDataKey[] = ["ReferenceError"];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isReferenceError(value)).toBeTruthy();
-      } else {
-        expect(isReferenceError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isReferenceError(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isSyntaxError", () => {
+  test.each(TestDataKeys)("isSyntaxError: %s", (key) => {
     const trueKeys: TestDataKey[] = ["SyntaxError"];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isSyntaxError(value)).toBeTruthy();
-      } else {
-        expect(isSyntaxError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isSyntaxError(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isTypeError", () => {
+  test.each(TestDataKeys)("isTypeError: %s", (key) => {
     const trueKeys: TestDataKey[] = ["TypeError"];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isTypeError(value)).toBeTruthy();
-      } else {
-        expect(isTypeError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isTypeError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isURIError", () => {
+  test.each(TestDataKeys)("isURIError: %s", (key) => {
     const trueKeys: TestDataKey[] = ["URIError"];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isURIError(value)).toBeTruthy();
-      } else {
-        expect(isURIError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isURIError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isNativeError", () => {
+  test.each(TestDataKeys)("isNativeError: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "EvalError",
       "RangeError",
@@ -114,13 +79,9 @@ describe("error", () => {
       "TypeError",
       "URIError",
     ];
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isNativeError(value)).toBeTruthy();
-      } else {
-        expect(isNativeError(value)).toBeFalsy();
-      }
-    });
+
+    expect(isNativeError(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

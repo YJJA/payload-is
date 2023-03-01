@@ -4,30 +4,29 @@ class CustomError extends Error {}
 
 const _Object = { fn: () => {}, method() {} };
 
-function MyClass() {}
-MyClass.prototype.constructor = MyClass;
+function CustomClass() {}
+CustomClass.prototype.constructor = CustomClass;
 // @ts-ignore
-const myClass = new MyClass();
+const customClassObject = new CustomClass();
 
-class MyOtherClass {
+class CustomOtherClass {
   constructor() {}
 }
 
-export const TestData = {
+const TestData = {
   // string
   emptyString: "",
   spaceString: "    ",
   fullString: "abcdeft",
-  xhxString: "_",
-  tempString: `sfaf`,
-  invalidString: "invalid",
+  underlineString: "_",
+  templateString: `sfaf`,
   // number string
   positiveNumberString: "-1",
   zeroNumberString: "0",
   negativeNumberString: "1",
-  NANString: "NaN",
+  NaNString: "NaN",
   // bigint string
-  bigintString: "BigInt(10)",
+  bigintString: "10n",
   // boolean string
   trueString: "true",
   falseString: "false",
@@ -43,7 +42,6 @@ export const TestData = {
   // object string
   objectString: "Object",
   emptyObjectString: "{}",
-  stringObejct: new String("abc"),
 
   // number
   positiveNumber: -1,
@@ -52,23 +50,19 @@ export const TestData = {
   MAX_VALUENumber: Number.MAX_VALUE,
   MIN_VALUENumber: Number.MIN_VALUE,
   InfinityNumber: Infinity,
-  NAN: NaN,
-  numberObject: new Number(1),
+  NaN: NaN,
 
   // bigint
-  bigint: BigInt(10),
-  bigintObject: Object(BigInt(10)),
+  bigint: 10n,
+  bigint2: BigInt(10),
 
   // boolean
   true: true,
   false: false,
-  trueObject: new Boolean(true),
-  falseObject: new Boolean(false),
 
   // symbol
-  defaultSymbol: Symbol(),
+  symbol: Symbol(),
   descSymbol: Symbol("description"),
-  symbolObject: Object(Symbol()),
 
   // undefined,
   undefined: undefined,
@@ -89,8 +83,8 @@ export const TestData = {
   asyncGeneratorFunction: async function* () {},
 
   // class
-  MyClass: MyClass,
-  MyOtherClass: MyOtherClass,
+  CustomClass: CustomClass,
+  MyOtherClass: CustomOtherClass,
 
   // array
   emptyArray: [],
@@ -116,12 +110,30 @@ export const TestData = {
   emptyNumberObject: { 0: "" },
   emptyStringObject: { "": "" },
   constructorObject: { constructor: "123" },
-  myClassObject: myClass,
+  customClassObject: customClassObject,
+  // string object
+  stringObject: Object("abc"),
+  string2Object: new String("abc"),
+  string3Object: new Object("abc"),
+  // number object
+  numberObject: Object(1),
+  number2Object: new Object(1),
+  number3Object: new Number(1),
+  // boolean object
+  booleanObject: Object(true),
+  boolean2Object: new Object(true),
+  boolean3Object: new Boolean(false),
+  // bigint object
+  bigintObject: Object(10n),
+  bigint2Object: new Object(10n),
+  // symbol object
+  symbolObject: Object(Symbol()),
+  symbol2Object: new Object(Symbol()),
 
   // date
   nowDate: new Date(),
   invalidDate: new Date("_"),
-  formatData: new Date(2022, 2, 23),
+  formatDate: new Date(2022, 2, 23),
 
   // promise
   loadingPromise: new Promise(() => {}),
@@ -180,3 +192,9 @@ export const TestData = {
 };
 
 export type TestDataKey = keyof typeof TestData;
+
+export const TestDataKeys = Object.keys(TestData) as TestDataKey[];
+
+export function getTestDataValue(key: TestDataKey) {
+  return Reflect.get(TestData, key);
+}

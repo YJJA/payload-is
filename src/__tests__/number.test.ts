@@ -1,4 +1,8 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import {
   isInvalidNumber,
   isNumber,
@@ -7,7 +11,7 @@ import {
 } from "../number.js";
 
 describe("number", () => {
-  test("isNumber", () => {
+  test.each(TestDataKeys)("isNumber: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "positiveNumber",
       "zeroNumber",
@@ -15,20 +19,13 @@ describe("number", () => {
       "MAX_VALUENumber",
       "MIN_VALUENumber",
       "InfinityNumber",
-      "NAN",
+      "NaN",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isNumber(value)).toBeTruthy();
-      } else {
-        expect(isNumber(value)).toBeFalsy();
-      }
-    });
+    expect(isNumber(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isValidNumber", () => {
+  test.each(TestDataKeys)("isValidNumber: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "positiveNumber",
       "zeroNumber",
@@ -38,39 +35,28 @@ describe("number", () => {
       "InfinityNumber",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isValidNumber(value)).toBeTruthy();
-      } else {
-        expect(isValidNumber(value)).toBeFalsy();
-      }
-    });
+    expect(isValidNumber(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isInvalidNumber", () => {
-    const trueKeys: TestDataKey[] = ["NAN"];
+  test.each(TestDataKeys)("isInvalidNumber: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["NaN"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isInvalidNumber(value)).toBeTruthy();
-      } else {
-        expect(isInvalidNumber(value)).toBeFalsy();
-      }
-    });
+    expect(isInvalidNumber(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isNumberObject", () => {
-    const trueKeys: TestDataKey[] = ["numberObject"];
+  test.each(TestDataKeys)("isNumberObject: %s", (key) => {
+    const trueKeys: TestDataKey[] = [
+      "numberObject",
+      "number2Object",
+      "number3Object",
+    ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isNumberObject(value)).toBeTruthy();
-      } else {
-        expect(isNumberObject(value)).toBeFalsy();
-      }
-    });
+    expect(isNumberObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });

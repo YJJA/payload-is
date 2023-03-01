@@ -1,4 +1,8 @@
-import { TestData, TestDataKey } from "../__test_utils__/test-data.js";
+import {
+  getTestDataValue,
+  TestDataKey,
+  TestDataKeys,
+} from "../__test_utils__/test-data.js";
 import {
   isString,
   isEmptyString,
@@ -7,18 +11,17 @@ import {
 } from "../string.js";
 
 describe("string", () => {
-  test("isString", () => {
+  test.each(TestDataKeys)("isString: %s", (key) => {
     const trueKeys: TestDataKey[] = [
       "emptyString",
       "spaceString",
       "fullString",
-      "xhxString",
-      "tempString",
-      "invalidString",
+      "underlineString",
+      "templateString",
       "positiveNumberString",
       "zeroNumberString",
       "negativeNumberString",
-      "NANString",
+      "NaNString",
       "bigintString",
       "trueString",
       "falseString",
@@ -31,40 +34,27 @@ describe("string", () => {
       "emptyObjectString",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isString(value)).toBeTruthy();
-      } else {
-        expect(isString(value)).toBeFalsy();
-      }
-    });
+    expect(isString(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isEmptyString", () => {
-    const trueKeys: (keyof typeof TestData)[] = ["emptyString"];
+  test.each(TestDataKeys)("isEmptyString: %s", (key) => {
+    const trueKeys: TestDataKey[] = ["emptyString"];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isEmptyString(value)).toBeTruthy();
-      } else {
-        expect(isEmptyString(value)).toBeFalsy();
-      }
-    });
+    expect(isEmptyString(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 
-  test("isFullString", () => {
-    const trueKeys: (keyof typeof TestData)[] = [
+  test.each(TestDataKeys)("isFullString: %s", (key) => {
+    const trueKeys: TestDataKey[] = [
       "spaceString",
       "fullString",
-      "xhxString",
-      "tempString",
-      "invalidString",
+      "underlineString",
+      "templateString",
       "positiveNumberString",
       "zeroNumberString",
       "negativeNumberString",
-      "NANString",
+      "NaNString",
       "bigintString",
       "trueString",
       "falseString",
@@ -77,26 +67,18 @@ describe("string", () => {
       "emptyObjectString",
     ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isFullString(value)).toBeTruthy();
-      } else {
-        expect(isFullString(value)).toBeFalsy();
-      }
-    });
+    expect(isFullString(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
-  test("isStringObject", () => {
-    const trueKeys: (keyof typeof TestData)[] = ["stringObejct"];
+  test.each(TestDataKeys)("isStringObject: %s", (key) => {
+    const trueKeys: TestDataKey[] = [
+      "stringObject",
+      "string2Object",
+      "string3Object",
+    ];
 
-    Object.keys(TestData).forEach((key: any) => {
-      const value = Reflect.get(TestData, key);
-      if (trueKeys.includes(key)) {
-        expect(isStringObject(value)).toBeTruthy();
-      } else {
-        expect(isStringObject(value)).toBeFalsy();
-      }
-    });
+    expect(isStringObject(getTestDataValue(key))).toEqual(
+      trueKeys.includes(key)
+    );
   });
 });
