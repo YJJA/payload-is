@@ -56,7 +56,7 @@ isBigInt(1n); // true
 isBigIntObject(Object(1n)); // true
 
 // boolean
-isBoolen(true); // true
+isBoolean(true); // true
 isBooleanObject(new Boolean(true)); // true
 isTrue(true); // true
 isFalse(false); // true

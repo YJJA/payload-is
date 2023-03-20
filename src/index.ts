@@ -1,6 +1,6 @@
 export { isArray, isEmptyArray, isFullArray } from "./array.js";
 export { isBigInt, isBigIntObject } from "./bigint.js";
-export { isBoolen, isBooleanObject, isTrue, isFalse } from "./boolean.js";
+export { isBoolean, isBooleanObject, isTrue, isFalse } from "./boolean.js";
 export {
   isArrayBuffer,
   isSharedArrayBuffer,

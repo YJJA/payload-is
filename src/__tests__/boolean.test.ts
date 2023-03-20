@@ -3,13 +3,13 @@ import {
   TestDataKey,
   TestDataKeys,
 } from "../__test_utils__/test-data.js";
-import { isBoolen, isBooleanObject, isTrue, isFalse } from "../boolean.js";
+import { isBoolean, isBooleanObject, isTrue, isFalse } from "../boolean.js";
 
 describe("boolean", () => {
-  test.each(TestDataKeys)("isBoolen: %s", (key) => {
+  test.each(TestDataKeys)("isBoolean: %s", (key) => {
     const trueKeys: TestDataKey[] = ["true", "false"];
 
-    expect(isBoolen(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    expect(isBoolean(getTestDataValue(key))).toEqual(trueKeys.includes(key));
   });
 
   test.each(TestDataKeys)("isTrue: %s", (key) => {
