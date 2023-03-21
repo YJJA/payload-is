@@ -1,5 +1,5 @@
 import { getType } from "./type.js";
-import type { AnyAsyncFunction, AnyFunction } from "./type";
+import type { AnyAsyncFunction, AnyFunction } from "./type.js";
 
 // function
 
