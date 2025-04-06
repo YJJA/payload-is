@@ -1,4 +1,4 @@
-import { getType } from "./type.js";
+import { getType } from "./type.ts";
 
 // file
 

@@ -1,6 +1,6 @@
-export { isArray, isEmptyArray, isFullArray } from "./array.js";
-export { isBigInt, isBigIntObject } from "./bigint.js";
-export { isBoolean, isBooleanObject, isTrue, isFalse } from "./boolean.js";
+export { isArray, isEmptyArray, isFullArray } from "./array.ts";
+export { isBigInt, isBigIntObject } from "./bigint.ts";
+export { isBoolean, isBooleanObject, isTrue, isFalse } from "./boolean.ts";
 export {
   isArrayBuffer,
   isSharedArrayBuffer,
@@ -18,10 +18,10 @@ export {
   isBigInt64Array,
   isBigUint64Array,
   isTypedArray,
-} from "./buffer.js";
-export { isSet, isMap, isWeakSet, isWeakMap, isWeakRef } from "./collection.js";
-export { isDate, isInvalidDate, isValidDate } from "./date.js";
-export { isBlob, isFile } from "./dom.js";
+} from "./buffer.ts";
+export { isSet, isMap, isWeakSet, isWeakMap, isWeakRef } from "./collection.ts";
+export { isDate, isInvalidDate, isValidDate } from "./date.ts";
+export { isBlob, isFile } from "./dom.ts";
 export {
   isError,
   isEvalError,
@@ -31,36 +31,36 @@ export {
   isSyntaxError,
   isTypeError,
   isURIError,
-} from "./error.js";
+} from "./error.ts";
 export {
   isAsyncFunction,
   isAsyncGeneratorFunction,
   isFunction,
   isGeneratorFunction,
-} from "./function.js";
-export { isAsyncGenerator, isGenerator } from "./generator.js";
-export { isAsyncIterable, isIterable } from "./iterable.js";
-export { isNil, isNull, isUndefined } from "./nil.js";
+} from "./function.ts";
+export { isAsyncGenerator, isGenerator } from "./generator.ts";
+export { isAsyncIterable, isIterable } from "./iterable.ts";
+export { isNil, isNull, isUndefined } from "./nil.ts";
 export {
   isInvalidNumber,
   isNumber,
   isNumberObject,
   isValidNumber,
-} from "./number.js";
+} from "./number.ts";
 export {
   isEmptyObject,
   isFullObject,
   isObject,
   isPlainObject,
-} from "./object.js";
-export { isPrimitive } from "./primitive.js";
-export { isPromise, isPromiseLike } from "./promise.js";
-export { isRegExp } from "./regexp.js";
+} from "./object.ts";
+export { isPrimitive } from "./primitive.ts";
+export { isPromise, isPromiseLike } from "./promise.ts";
+export { isRegExp } from "./regexp.ts";
 export {
   isString,
   isEmptyString,
   isFullString,
   isStringObject,
-} from "./string.js";
-export { isSymbol, isSymbolObject } from "./symbol.js";
-export { getType } from "./type.js";
+} from "./string.ts";
+export { isSymbol, isSymbolObject } from "./symbol.ts";
+export { getType } from "./type.ts";

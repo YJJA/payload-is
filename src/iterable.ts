@@ -1,6 +1,6 @@
-import { isFunction } from "./function.js";
-import { isUndefined } from "./nil.js";
-import { isObject } from "./object.js";
+import { isFunction } from "./function.ts";
+import { isUndefined } from "./nil.ts";
+import { isObject } from "./object.ts";
 
 // Iterable
 

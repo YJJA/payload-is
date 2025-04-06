@@ -1,7 +1,7 @@
 // BigInt
 
-import { isObject } from "./object.js";
-import { getType } from "./type.js";
+import { isObject } from "./object.ts";
+import { getType } from "./type.ts";
 
 export function isBigInt(payload: unknown): payload is bigint {
   return typeof payload === "bigint";

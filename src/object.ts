@@ -1,6 +1,6 @@
 // object
 
-import type { PlainObject } from "./type.js";
+import type { PlainObject } from "./type.ts";
 
 export function isObject(payload: unknown): payload is object {
   return typeof payload === "object" && payload !== null;

@@ -1,6 +1,6 @@
 // array
 
-import { getType } from "./type.js";
+import { getType } from "./type.ts";
 
 export function isArray(payload: unknown): payload is unknown[] {
   return getType(payload) === "Array";
