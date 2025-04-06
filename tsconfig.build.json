@@ -1,9 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "target": "ES2015",
-    "module": "CommonJS"
-  },
   "include": ["src/**/*"],
   "exclude": ["**/__test_utils__/**/*", "**/__tests__/**/*"]
 }
