@@ -1,8 +1,10 @@
-import { getType } from "../type.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { getType } from "../type.ts";
 
 describe("utils", () => {
-  test("getType", () => {
-    expect(getType({})).toEqual("Object");
-    expect(getType([])).toEqual("Array");
+  it("getType", () => {
+    assert.equal(getType({}), "Object");
+    assert.equal(getType([]), "Array");
   });
 });

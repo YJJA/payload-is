@@ -1,12 +1,10 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isAsyncIterable, isIterable } from "../iterable.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isAsyncIterable, isIterable } from "../iterable.ts";
 
 describe("iterable", () => {
-  test.each(TestDataKeys)("isIterable: %s", (key) => {
+  it("isIterable: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       // string
       "stringObject",
@@ -49,14 +47,23 @@ describe("iterable", () => {
       "BigUint64Array",
     ];
 
-    expect(isIterable(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isIterable(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isAsyncIterable: %s", (key) => {
+  it("isAsyncIterable: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["AsyncGenerator"];
 
-    expect(isAsyncIterable(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isAsyncIterable(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 });

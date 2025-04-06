@@ -1,44 +1,62 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import {
   isSet,
   isMap,
   isWeakSet,
   isWeakMap,
   isWeakRef,
-} from "../collection.js";
+} from "../collection.ts";
 
 describe("collection", () => {
-  test.each(TestDataKeys)("isSet: %s", (key) => {
+  it("isSet: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Set"];
 
-    expect(isSet(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isSet(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isWeakSet: %s", (key) => {
+  it("isWeakSet: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["WeakSet"];
 
-    expect(isWeakSet(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isWeakSet(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isMap: %s", (key) => {
+  it("isMap: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Map"];
 
-    expect(isMap(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isMap(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isWeakMap: %s", (key) => {
+  it("isWeakMap: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["WeakMap"];
 
-    expect(isWeakMap(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isWeakMap(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isWeakRef: %s", (key) => {
+  it("isWeakRef: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["WeakRef"];
 
-    expect(isWeakRef(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isWeakRef(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

@@ -13,7 +13,7 @@ class CustomOtherClass {
   constructor() {}
 }
 
-const TestData = {
+export const TestData = {
   // string
   emptyString: "",
   spaceString: "    ",

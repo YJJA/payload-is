@@ -1,8 +1,6 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import {
   isArrayBuffer,
   isSharedArrayBuffer,
@@ -20,120 +18,181 @@ import {
   isBigInt64Array,
   isBigUint64Array,
   isTypedArray,
-} from "../buffer.js";
+} from "../buffer.ts";
 
 describe("buffer", () => {
-  test.each(TestDataKeys)("isArrayBuffer: %s", (key) => {
+  it("isArrayBuffer: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["ArrayBuffer"];
 
-    expect(isArrayBuffer(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isArrayBuffer(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isSharedArrayBuffer: %s", (key) => {
+  it("isSharedArrayBuffer: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["SharedArrayBuffer"];
 
-    expect(isSharedArrayBuffer(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isSharedArrayBuffer(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isArrayBufferLike: %s", (key) => {
+  it("isArrayBufferLike: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["ArrayBuffer", "SharedArrayBuffer"];
 
-    expect(isArrayBufferLike(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isArrayBufferLike(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isDataView: %s", (key) => {
+  it("isDataView: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["DataView"];
 
-    expect(isDataView(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isDataView(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isInt8Array: %s", (key) => {
+  it("isInt8Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Int8Array"];
 
-    expect(isInt8Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isInt8Array(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isUint8Array: %s", (key) => {
+  it("isUint8Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Uint8Array"];
 
-    expect(isUint8Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isUint8Array(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isUint8ClampedArray: %s", (key) => {
+  it("isUint8ClampedArray: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Uint8ClampedArray"];
 
-    expect(isUint8ClampedArray(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isUint8ClampedArray(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isInt16Array: %s", (key) => {
+  it("isInt16Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Int16Array"];
 
-    expect(isInt16Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isInt16Array(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isUint16Array: %s", (key) => {
+  it("isUint16Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Uint16Array"];
 
-    expect(isUint16Array(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isUint16Array(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isInt32Array: %s", (key) => {
+  it("isInt32Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Int32Array"];
 
-    expect(isInt32Array(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isInt32Array(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isUint32Array: %s", (key) => {
+  it("isUint32Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Uint32Array"];
 
-    expect(isUint32Array(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isUint32Array(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isFloat32Array: %s", (key) => {
+  it("isFloat32Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Float32Array"];
 
-    expect(isFloat32Array(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isFloat32Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isFloat64Array: %s", (key) => {
+  it("isFloat64Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Float64Array"];
 
-    expect(isFloat64Array(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isFloat64Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isBigInt64Array: %s", (key) => {
+  it("isBigInt64Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["BigInt64Array"];
 
-    expect(isBigInt64Array(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isBigInt64Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isBigUint64Array: %s", (key) => {
+  it("isBigUint64Array: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["BigUint64Array"];
 
-    expect(isBigUint64Array(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isBigUint64Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isTypedArray: %s", (key) => {
+  it("isTypedArray: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "Int8Array",
       "Uint8Array",
@@ -148,6 +207,10 @@ describe("buffer", () => {
       "BigUint64Array",
     ];
 
-    expect(isTypedArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isTypedArray(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

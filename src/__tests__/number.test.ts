@@ -1,17 +1,15 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import {
   isInvalidNumber,
   isNumber,
   isNumberObject,
   isValidNumber,
-} from "../number.js";
+} from "../number.ts";
 
 describe("number", () => {
-  test.each(TestDataKeys)("isNumber: %s", (key) => {
+  it("isNumber: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "positiveNumber",
       "zeroNumber",
@@ -22,10 +20,14 @@ describe("number", () => {
       "NaN",
     ];
 
-    expect(isNumber(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isNumber(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isValidNumber: %s", (key) => {
+  it("isValidNumber: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "positiveNumber",
       "zeroNumber",
@@ -35,28 +37,40 @@ describe("number", () => {
       "InfinityNumber",
     ];
 
-    expect(isValidNumber(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isValidNumber(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isInvalidNumber: %s", (key) => {
+  it("isInvalidNumber: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["NaN"];
 
-    expect(isInvalidNumber(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isInvalidNumber(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isNumberObject: %s", (key) => {
+  it("isNumberObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "numberObject",
       "number2Object",
       "number3Object",
     ];
 
-    expect(isNumberObject(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isNumberObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 });

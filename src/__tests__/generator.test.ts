@@ -1,22 +1,29 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isAsyncGenerator, isGenerator } from "../generator.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isAsyncGenerator, isGenerator } from "../generator.ts";
 
 describe("generator", () => {
-  test.each(TestDataKeys)("isGenerator: %s", (key) => {
+  it("isGenerator: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Generator"];
 
-    expect(isGenerator(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isGenerator(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isAsyncGenerator: %s", (key) => {
+  it("isAsyncGenerator: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["AsyncGenerator"];
 
-    expect(isAsyncGenerator(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isAsyncGenerator(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 });

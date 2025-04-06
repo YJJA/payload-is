@@ -1,28 +1,36 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isDate, isInvalidDate, isValidDate } from "../date.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isDate, isInvalidDate, isValidDate } from "../date.ts";
 
 describe("date", () => {
-  test.each(TestDataKeys)("isDate: %s", (key) => {
+  it("isDate: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["nowDate", "invalidDate", "formatDate"];
 
-    expect(isDate(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isDate(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isValidDate: %s", (key) => {
+  it("isValidDate: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["nowDate", "formatDate"];
 
-    expect(isValidDate(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isValidDate(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isInvalidDate: %s", (key) => {
+  it("isInvalidDate: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["invalidDate"];
 
-    expect(isInvalidDate(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isInvalidDate(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

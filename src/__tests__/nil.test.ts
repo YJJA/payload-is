@@ -1,26 +1,36 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isNil, isNull, isUndefined } from "../nil.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isNil, isNull, isUndefined } from "../nil.ts";
 
 describe("nil", () => {
-  test.each(TestDataKeys)("isUndefined: %s", (key) => {
+  it("isUndefined: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["undefined"];
 
-    expect(isUndefined(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isUndefined(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isNull: %s", (key) => {
+  it("isNull: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["null"];
 
-    expect(isNull(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isNull(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isNil: %s", (key) => {
+  it("isNil: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["undefined", "null"];
 
-    expect(isNil(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isNil(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

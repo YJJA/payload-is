@@ -1,12 +1,10 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isArray, isEmptyArray, isFullArray } from "../array.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isArray, isEmptyArray, isFullArray } from "../array.ts";
 
 describe("array", () => {
-  test.each(TestDataKeys)("isArray: %s", (key) => {
+  it("isArray: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "emptyArray",
       "prototypeArray",
@@ -23,10 +21,14 @@ describe("array", () => {
       "stringNewMoreArray",
     ];
 
-    expect(isArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isArray(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isEmptyArray: %s", (key) => {
+  it("isEmptyArray: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "emptyArray",
       "prototypeArray",
@@ -34,10 +36,14 @@ describe("array", () => {
       "emptyZeroArray",
     ];
 
-    expect(isEmptyArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isEmptyArray(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isFullArray: %s", (key) => {
+  it("isFullArray: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "numberArray",
       "stringArray",
@@ -50,6 +56,10 @@ describe("array", () => {
       "stringNewMoreArray",
     ];
 
-    expect(isFullArray(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isFullArray(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

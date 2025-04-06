@@ -1,17 +1,15 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import {
   isEmptyObject,
   isFullObject,
   isObject,
   isPlainObject,
-} from "../object.js";
+} from "../object.ts";
 
 describe("object", () => {
-  test.each(TestDataKeys)("isObject: %s", (key) => {
+  it("isObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       // string
       "stringObject",
@@ -123,10 +121,14 @@ describe("object", () => {
       "File",
     ];
 
-    expect(isObject(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isObject(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isPlainObject: %s", (key) => {
+  it("isPlainObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       // object
       "emptyObject",
@@ -141,12 +143,14 @@ describe("object", () => {
       "promiseLike",
     ];
 
-    expect(isPlainObject(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isPlainObject(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isEmptyObject: %s", (key) => {
+  it("isEmptyObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       // object
       "emptyObject",
@@ -155,12 +159,14 @@ describe("object", () => {
       "newEmptyObject",
     ];
 
-    expect(isEmptyObject(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isEmptyObject(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isFullObject: %s", (key) => {
+  it("isFullObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       // object
       "fullObject",
@@ -171,6 +177,10 @@ describe("object", () => {
       "promiseLike",
     ];
 
-    expect(isFullObject(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isFullObject(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

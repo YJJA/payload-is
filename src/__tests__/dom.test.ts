@@ -1,20 +1,26 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isBlob, isFile } from "../dom.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isBlob, isFile } from "../dom.ts";
 
 describe("dom", () => {
-  test.each(TestDataKeys)("isBlob: %s", (key) => {
+  it("isBlob: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["Blob"];
 
-    expect(isBlob(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isBlob(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isFile: %s", (key) => {
+  it("isFile: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["File"];
 
-    expect(isFile(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isFile(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

@@ -1,22 +1,24 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isPromise, isPromiseLike } from "../promise.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isPromise, isPromiseLike } from "../promise.ts";
 
 describe("promise", () => {
-  test.each(TestDataKeys)("isPromise: %s", (key) => {
+  it("isPromise: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "loadingPromise",
       "rejectPromise",
       "resolvePromise",
     ];
 
-    expect(isPromise(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isPromise(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isPromiseLike: %s", (key) => {
+  it("isPromiseLike: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "loadingPromise",
       "rejectPromise",
@@ -24,8 +26,10 @@ describe("promise", () => {
       "promiseLike",
     ];
 
-    expect(isPromiseLike(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isPromiseLike(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

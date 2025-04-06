@@ -1,17 +1,15 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import {
   isAsyncFunction,
   isAsyncGeneratorFunction,
   isFunction,
   isGeneratorFunction,
-} from "../function.js";
+} from "../function.ts";
 
 describe("function", () => {
-  test.each(TestDataKeys)("isFunction: %s", (key) => {
+  it("isFunction: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "noopFunction",
       "arrowFunction",
@@ -28,30 +26,49 @@ describe("function", () => {
       "MyOtherClass",
     ];
 
-    expect(isFunction(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isFunction(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isAsyncFunction: %s", (key) => {
+  it("isAsyncFunction: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["asyncFunction", "asyncArrowFunction"];
 
-    expect(isAsyncFunction(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isAsyncFunction(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isGeneratorFunction: %s", (key) => {
+  it("isGeneratorFunction: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["generatorFunction"];
 
-    expect(isGeneratorFunction(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isGeneratorFunction(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isAsyncGeneratorFunction: %s", (key) => {
+  it("isAsyncGeneratorFunction: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["asyncGeneratorFunction"];
 
-    expect(isAsyncGeneratorFunction(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isAsyncGeneratorFunction(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 });

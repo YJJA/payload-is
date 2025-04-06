@@ -1,8 +1,6 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import {
   isError,
   isEvalError,
@@ -12,10 +10,10 @@ import {
   isSyntaxError,
   isTypeError,
   isURIError,
-} from "../error.js";
+} from "../error.ts";
 
 describe("error", () => {
-  test.each(TestDataKeys)("isError: %s", (key) => {
+  it("isError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "Error",
       "CustomError",
@@ -27,50 +25,77 @@ describe("error", () => {
       "URIError",
     ];
 
-    expect(isError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isEvalError: %s", (key) => {
+  it("isEvalError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["EvalError"];
 
-    expect(isEvalError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isEvalError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isRangeError: %s", (key) => {
+  it("isRangeError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["RangeError"];
 
-    expect(isRangeError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isRangeError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isReferenceError: %s", (key) => {
+  it("isReferenceError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["ReferenceError"];
 
-    expect(isReferenceError(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isReferenceError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isSyntaxError: %s", (key) => {
+  it("isSyntaxError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["SyntaxError"];
 
-    expect(isSyntaxError(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isSyntaxError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isTypeError: %s", (key) => {
+  it("isTypeError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["TypeError"];
 
-    expect(isTypeError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isTypeError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isURIError: %s", (key) => {
+  it("isURIError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["URIError"];
 
-    expect(isURIError(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isURIError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isNativeError: %s", (key) => {
+  it("isNativeError: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       "EvalError",
       "RangeError",
@@ -80,8 +105,10 @@ describe("error", () => {
       "URIError",
     ];
 
-    expect(isNativeError(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isNativeError(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });

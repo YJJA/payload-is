@@ -1,22 +1,29 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isSymbol, isSymbolObject } from "../symbol.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isSymbol, isSymbolObject } from "../symbol.ts";
 
 describe("symbol", () => {
-  test.each(TestDataKeys)("isSymbol: %s", (key) => {
+  it("isSymbol: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["symbol", "descSymbol"];
 
-    expect(isSymbol(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isSymbol(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isSymbolObject: %s", (key) => {
+  it("isSymbolObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["symbolObject", "symbol2Object"];
 
-    expect(isSymbolObject(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isSymbolObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 });

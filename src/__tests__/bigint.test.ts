@@ -1,22 +1,29 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isBigInt, isBigIntObject } from "../bigint.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isBigInt, isBigIntObject } from "../bigint.ts";
 
 describe("bigint", () => {
-  test.each(TestDataKeys)("isBigInt: %s", (key) => {
+  it("isBigInt: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["bigint", "bigint2"];
 
-    expect(isBigInt(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isBigInt(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 
-  test.each(TestDataKeys)("isBigIntObject: %s", (key) => {
+  it("isBigIntObject: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = ["bigintObject", "bigint2Object"];
 
-    expect(isBigIntObject(getTestDataValue(key))).toEqual(
-      trueKeys.includes(key)
-    );
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(
+          isBigIntObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
+      });
+    }
   });
 });

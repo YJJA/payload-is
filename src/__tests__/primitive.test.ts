@@ -1,12 +1,10 @@
-import {
-  getTestDataValue,
-  TestDataKey,
-  TestDataKeys,
-} from "../__test_utils__/test-data.js";
-import { isPrimitive } from "../primitive.js";
+import { it, describe } from "node:test";
+import assert from "node:assert/strict";
+import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
+import { isPrimitive } from "../primitive.ts";
 
 describe("primitive", () => {
-  test.each(TestDataKeys)("isPrimitive: %s", (key) => {
+  it("isPrimitive: ", { concurrency: true }, (t) => {
     const trueKeys: TestDataKey[] = [
       // string;
       "emptyString",
@@ -55,6 +53,10 @@ describe("primitive", () => {
       "null",
     ];
 
-    expect(isPrimitive(getTestDataValue(key))).toEqual(trueKeys.includes(key));
+    for (const [key, val] of Object.entries(TestData)) {
+      t.test(key, () => {
+        assert.equal(isPrimitive(val), trueKeys.includes(key as TestDataKey));
+      });
+    }
   });
 });
