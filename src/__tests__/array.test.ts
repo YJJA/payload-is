@@ -23,7 +23,7 @@ describe("array", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isArray(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isArray(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -38,7 +38,10 @@ describe("array", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isEmptyArray(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isEmptyArray(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -58,7 +61,10 @@ describe("array", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isFullArray(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isFullArray(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

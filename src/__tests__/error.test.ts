@@ -27,7 +27,7 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isError(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -37,7 +37,10 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isEvalError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isEvalError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -47,7 +50,10 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isRangeError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isRangeError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -57,7 +63,7 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isReferenceError(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -70,7 +76,10 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isSyntaxError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isSyntaxError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -80,7 +89,10 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isTypeError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isTypeError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -90,7 +102,10 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isURIError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isURIError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -107,7 +122,10 @@ describe("error", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isNativeError(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isNativeError(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

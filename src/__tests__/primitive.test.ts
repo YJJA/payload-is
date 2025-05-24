@@ -55,7 +55,10 @@ describe("primitive", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isPrimitive(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isPrimitive(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

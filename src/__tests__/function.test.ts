@@ -28,7 +28,10 @@ describe("function", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isFunction(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isFunction(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -38,7 +41,7 @@ describe("function", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isAsyncFunction(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -51,7 +54,7 @@ describe("function", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isGeneratorFunction(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -64,7 +67,7 @@ describe("function", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isAsyncGeneratorFunction(val),
           trueKeys.includes(key as TestDataKey)
         );

@@ -1,9 +1,7 @@
-import { getType } from "./type.ts";
-
 // Error
 
 export function isError(payload: unknown): payload is Error {
-  return getType(payload) === "Error";
+  return payload instanceof Error;
 }
 
 export function isEvalError(payload: unknown): payload is EvalError {

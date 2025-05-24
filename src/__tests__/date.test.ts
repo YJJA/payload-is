@@ -9,7 +9,7 @@ describe("date", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isDate(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isDate(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -19,7 +19,10 @@ describe("date", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isValidDate(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isValidDate(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -29,7 +32,10 @@ describe("date", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isInvalidDate(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isInvalidDate(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

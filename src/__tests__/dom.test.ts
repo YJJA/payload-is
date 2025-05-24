@@ -5,11 +5,11 @@ import { isBlob, isFile } from "../dom.ts";
 
 describe("dom", () => {
   it("isBlob: ", { concurrency: true }, (t) => {
-    const trueKeys: TestDataKey[] = ["Blob"];
+    const trueKeys: TestDataKey[] = ["Blob", "File"];
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isBlob(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isBlob(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -19,7 +19,7 @@ describe("dom", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isFile(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isFile(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });

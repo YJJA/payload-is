@@ -1,9 +1,7 @@
 // array
 
-import { getType } from "./type.ts";
-
 export function isArray(payload: unknown): payload is unknown[] {
-  return getType(payload) === "Array";
+  return Array.isArray(payload);
 }
 
 export function isEmptyArray(payload: unknown): payload is [] {

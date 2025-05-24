@@ -26,7 +26,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isArrayBuffer(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isArrayBuffer(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -36,7 +39,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isSharedArrayBuffer(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -49,7 +52,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isArrayBufferLike(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -62,7 +65,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isDataView(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isDataView(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -72,7 +78,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isInt8Array(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isInt8Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -82,7 +91,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isUint8Array(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isUint8Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -92,7 +104,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isUint8ClampedArray(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -105,7 +117,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isInt16Array(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isInt16Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -115,7 +130,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isUint16Array(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isUint16Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -125,7 +143,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isInt32Array(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isInt32Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -135,7 +156,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isUint32Array(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isUint32Array(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -145,7 +169,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isFloat32Array(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -158,7 +182,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isFloat64Array(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -171,7 +195,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isBigInt64Array(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -184,7 +208,7 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isBigUint64Array(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -209,7 +233,10 @@ describe("buffer", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isTypedArray(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isTypedArray(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

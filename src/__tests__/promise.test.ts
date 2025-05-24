@@ -13,7 +13,10 @@ describe("promise", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isPromise(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isPromise(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -28,7 +31,10 @@ describe("promise", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isPromiseLike(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isPromiseLike(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

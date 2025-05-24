@@ -147,6 +147,28 @@ export const TestData = {
   Generator: (function* () {})(),
   AsyncGenerator: (async function* () {})(),
 
+  // iterator
+  IteratorObject: {
+    [Symbol.iterator]: function* () {
+      yield 1;
+      yield 2;
+    },
+  },
+  AsyncIteratorObject: {
+    [Symbol.asyncIterator]: async function* () {
+      yield 1;
+      yield 2;
+    },
+  },
+
+  ArrayIterator: [1, 2, 3][Symbol.iterator](),
+  StringIterator: "abc"[Symbol.iterator](),
+  MapIterator: new Map([
+    [1, "a"],
+    [2, "b"],
+  ])[Symbol.iterator](),
+  SetIterator: new Set([1, 2, 3])[Symbol.iterator](),
+
   // RegExp
   numberRegExp: /\d+/,
   globalRegExp: /\d+/g,

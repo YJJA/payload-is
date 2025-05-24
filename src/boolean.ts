@@ -5,11 +5,11 @@ export function isBoolean(payload: unknown): payload is boolean {
 }
 
 export function isTrue(payload: unknown): payload is boolean {
-  return isBoolean(payload) && payload === true;
+  return payload === true;
 }
 
 export function isFalse(payload: unknown): payload is boolean {
-  return isBoolean(payload) && payload === false;
+  return payload === false;
 }
 
 export function isBooleanObject(payload: unknown): payload is Boolean {

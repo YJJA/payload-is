@@ -22,7 +22,10 @@ describe("number", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isNumber(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isNumber(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -39,7 +42,10 @@ describe("number", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isValidNumber(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isValidNumber(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -49,7 +55,7 @@ describe("number", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isInvalidNumber(val),
           trueKeys.includes(key as TestDataKey)
         );
@@ -66,7 +72,7 @@ describe("number", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isNumberObject(val),
           trueKeys.includes(key as TestDataKey)
         );

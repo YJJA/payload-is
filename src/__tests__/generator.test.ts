@@ -9,7 +9,10 @@ describe("generator", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isGenerator(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isGenerator(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -19,7 +22,7 @@ describe("generator", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isAsyncGenerator(val),
           trueKeys.includes(key as TestDataKey)
         );

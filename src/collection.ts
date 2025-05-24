@@ -1,23 +1,21 @@
-import { getType } from "./type.ts";
-
 // collection
 
 export function isSet(payload: unknown): payload is Set<any> {
-  return getType(payload) === "Set";
+  return payload instanceof Set;
 }
 
 export function isWeakSet(payload: unknown): payload is WeakSet<any> {
-  return getType(payload) === "WeakSet";
+  return payload instanceof WeakSet;
 }
 
 export function isMap(payload: unknown): payload is Map<any, any> {
-  return getType(payload) === "Map";
+  return payload instanceof Map;
 }
 
 export function isWeakMap(payload: unknown): payload is WeakMap<any, any> {
-  return getType(payload) === "WeakMap";
+  return payload instanceof WeakMap;
 }
 
 export function isWeakRef(payload: unknown): payload is WeakRef<any> {
-  return getType(payload) === "WeakRef";
+  return payload instanceof WeakRef;
 }

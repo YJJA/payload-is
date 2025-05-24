@@ -29,6 +29,13 @@ describe("iterable", () => {
       // generator
       "Generator",
 
+      "IteratorObject",
+
+      "ArrayIterator",
+      "StringIterator",
+      "MapIterator",
+      "SetIterator",
+
       // collection
       "Set",
       "Map",
@@ -49,17 +56,20 @@ describe("iterable", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isIterable(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isIterable(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
 
   it("isAsyncIterable: ", { concurrency: true }, (t) => {
-    const trueKeys: TestDataKey[] = ["AsyncGenerator"];
+    const trueKeys: TestDataKey[] = ["AsyncGenerator", "AsyncIteratorObject"];
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isAsyncIterable(val),
           trueKeys.includes(key as TestDataKey)
         );

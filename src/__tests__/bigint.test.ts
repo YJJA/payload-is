@@ -9,7 +9,10 @@ describe("bigint", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isBigInt(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isBigInt(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -19,7 +22,7 @@ describe("bigint", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isBigIntObject(val),
           trueKeys.includes(key as TestDataKey)
         );

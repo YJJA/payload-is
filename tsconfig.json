@@ -5,6 +5,6 @@
     "@tsconfig/node-ts/tsconfig.json"
   ],
   "compilerOptions": {
-    "lib": ["DOM", "ES2023"]
+    "lib": ["DOM", "ESNext"]
   }
 }

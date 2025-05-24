@@ -1,11 +1,9 @@
-import { getType } from "./type.ts";
-
 // file
 
 export function isBlob(payload: unknown): payload is Blob {
-  return getType(payload) === "Blob";
+  return payload instanceof Blob;
 }
 
 export function isFile(payload: unknown): payload is File {
-  return getType(payload) === "File";
+  return payload instanceof File;
 }

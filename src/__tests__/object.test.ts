@@ -76,6 +76,13 @@ describe("object", () => {
       // generator
       "Generator",
       "AsyncGenerator",
+      "IteratorObject",
+      "AsyncIteratorObject",
+
+      "ArrayIterator",
+      "StringIterator",
+      "MapIterator",
+      "SetIterator",
 
       // RegExp
       "numberRegExp",
@@ -123,7 +130,10 @@ describe("object", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isObject(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -141,11 +151,17 @@ describe("object", () => {
 
       // promiseLike
       "promiseLike",
+
+      "IteratorObject",
+      "AsyncIteratorObject",
     ];
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isPlainObject(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isPlainObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -157,11 +173,17 @@ describe("object", () => {
       "newObject",
       "nullObject",
       "newEmptyObject",
+
+      "IteratorObject",
+      "AsyncIteratorObject",
     ];
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isEmptyObject(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isEmptyObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -179,7 +201,10 @@ describe("object", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isFullObject(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isFullObject(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

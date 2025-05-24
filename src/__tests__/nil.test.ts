@@ -9,7 +9,10 @@ describe("nil", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isUndefined(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isUndefined(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -19,7 +22,7 @@ describe("nil", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isNull(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isNull(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -29,7 +32,7 @@ describe("nil", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isNil(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isNil(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });

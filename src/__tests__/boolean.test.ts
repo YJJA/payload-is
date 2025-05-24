@@ -9,7 +9,10 @@ describe("boolean", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isBoolean(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isBoolean(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -19,7 +22,7 @@ describe("boolean", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isTrue(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isTrue(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -29,7 +32,7 @@ describe("boolean", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isFalse(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isFalse(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -43,7 +46,7 @@ describe("boolean", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isBooleanObject(val),
           trueKeys.includes(key as TestDataKey)
         );

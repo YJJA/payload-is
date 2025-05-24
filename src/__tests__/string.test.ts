@@ -34,7 +34,10 @@ describe("string", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isString(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isString(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -44,7 +47,10 @@ describe("string", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isEmptyString(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isEmptyString(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -73,7 +79,10 @@ describe("string", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isFullString(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isFullString(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -87,7 +96,7 @@ describe("string", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(
+        assert.strictEqual(
           isStringObject(val),
           trueKeys.includes(key as TestDataKey)
         );

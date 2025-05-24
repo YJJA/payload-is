@@ -4,7 +4,7 @@ import { getType } from "../type.ts";
 
 describe("utils", () => {
   it("getType", () => {
-    assert.equal(getType({}), "Object");
-    assert.equal(getType([]), "Array");
+    assert.strictEqual(getType({}), "Object");
+    assert.strictEqual(getType([]), "Array");
   });
 });

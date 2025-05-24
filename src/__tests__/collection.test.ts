@@ -15,7 +15,7 @@ describe("collection", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isSet(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isSet(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -25,7 +25,10 @@ describe("collection", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isWeakSet(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isWeakSet(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -35,7 +38,7 @@ describe("collection", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isMap(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(isMap(val), trueKeys.includes(key as TestDataKey));
       });
     }
   });
@@ -45,7 +48,10 @@ describe("collection", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isWeakMap(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isWeakMap(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });
@@ -55,7 +61,10 @@ describe("collection", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isWeakRef(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isWeakRef(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

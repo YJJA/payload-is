@@ -13,7 +13,10 @@ describe("regexp", () => {
 
     for (const [key, val] of Object.entries(TestData)) {
       t.test(key, () => {
-        assert.equal(isRegExp(val), trueKeys.includes(key as TestDataKey));
+        assert.strictEqual(
+          isRegExp(val),
+          trueKeys.includes(key as TestDataKey)
+        );
       });
     }
   });

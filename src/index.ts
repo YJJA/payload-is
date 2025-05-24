@@ -40,6 +40,7 @@ export {
 } from "./function.ts";
 export { isAsyncGenerator, isGenerator } from "./generator.ts";
 export { isAsyncIterable, isIterable } from "./iterable.ts";
+export { isAsyncIterator, isIterator } from "./iterator.ts";
 export { isNil, isNull, isUndefined } from "./nil.ts";
 export {
   isInvalidNumber,
