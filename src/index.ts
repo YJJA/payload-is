@@ -83,3 +83,5 @@ export {
 export { isSymbol, isSymbolObject } from "./symbol.ts";
 export { getType, getTag } from "./type.ts";
 export { getDataType } from "./dataType.ts";
+export { isPropertyKey, enumerableKeys } from "./key.ts";
+export { hasFromJSON, hasToJSON } from "./has.ts";
