@@ -82,3 +82,4 @@ export {
 } from "./string.ts";
 export { isSymbol, isSymbolObject } from "./symbol.ts";
 export { getType, getTag } from "./type.ts";
+export { getDataType } from "./dataType.ts";
