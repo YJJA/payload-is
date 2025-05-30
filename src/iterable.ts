@@ -3,7 +3,6 @@ import { isUndefined } from "./nil.ts";
 import { isObject } from "./object.ts";
 
 // Iterable
-
 export function isIterable(payload: unknown): payload is Iterable<any> {
   return (
     typeof Symbol !== "undefined" &&
@@ -14,7 +13,6 @@ export function isIterable(payload: unknown): payload is Iterable<any> {
 }
 
 // AsyncIterable
-
 export function isAsyncIterable(
   payload: unknown
 ): payload is AsyncIterable<any> {

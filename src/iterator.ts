@@ -6,9 +6,9 @@ import { isObject } from "./object.ts";
 export function isIterator(payload: unknown): payload is Iterator<any> {
   return (
     (typeof Iterator !== "undefined" && payload instanceof Iterator) ||
-    (isObject(payload) &&
-      typeof Symbol !== "undefined" &&
+    (typeof Symbol !== "undefined" &&
       !isUndefined(Symbol.iterator) &&
+      isObject(payload) &&
       isFunction((payload as IteratorObject<any>)[Symbol.iterator]) &&
       (payload as IteratorObject<any>)[Symbol.iterator]() === payload)
   );
@@ -19,9 +19,9 @@ export function isAsyncIterator(
   payload: unknown
 ): payload is AsyncIterator<any> {
   return (
-    isObject(payload) &&
     typeof Symbol !== "undefined" &&
     !isUndefined(Symbol.asyncIterator) &&
+    isObject(payload) &&
     isFunction((payload as AsyncIteratorObject<any>)[Symbol.asyncIterator]) &&
     (payload as AsyncIteratorObject<any>)[Symbol.asyncIterator]() === payload
   );

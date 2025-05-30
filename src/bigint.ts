@@ -1,14 +1,17 @@
 // BigInt
 
+import { getTag } from "./type.ts";
+
 export function isBigInt(payload: unknown): payload is bigint {
   return typeof payload === "bigint";
 }
 
-/**
- * wrapped BigInt values
- * Object((BigInt(10)))
- */
-
+// wrapper for BigInt
 export function isBigIntObject(payload: unknown): payload is BigInt {
-  return payload instanceof BigInt;
+  return typeof payload === "object" && getTag(payload) === "BigInt";
+}
+
+// isBigIntArray
+export function isBigIntArray(payload: unknown): payload is bigint[] {
+  return Array.isArray(payload) && payload.every((item) => isBigInt(item));
 }

@@ -1,6 +1,6 @@
 export { isArray, isEmptyArray, isFullArray } from "./array.ts";
-export { isBigInt, isBigIntObject } from "./bigint.ts";
-export { isBoolean, isBooleanObject, isTrue, isFalse } from "./boolean.ts";
+export { isBigInt, isBigIntObject, isBigIntArray } from "./bigint.ts";
+export { isBoolean, isTrue, isFalse, isBooleanObject } from "./boolean.ts";
 export {
   isArrayBuffer,
   isSharedArrayBuffer,
@@ -19,11 +19,26 @@ export {
   isBigUint64Array,
   isTypedArray,
 } from "./buffer.ts";
-export { isSet, isMap, isWeakSet, isWeakMap, isWeakRef } from "./collection.ts";
+export {
+  isSet,
+  isMap,
+  isWeakSet,
+  isWeakMap,
+  isWeakRef,
+  isMapEntries,
+} from "./collection.ts";
 export { isDate, isInvalidDate, isValidDate } from "./date.ts";
-export { isBlob, isFile } from "./dom.ts";
+export {
+  isBlob,
+  isFile,
+  isFormData,
+  isHeaders,
+  isRequest,
+  isResponse,
+} from "./dom.ts";
 export {
   isError,
+  isAggregateError,
   isEvalError,
   isNativeError,
   isRangeError,
@@ -33,9 +48,9 @@ export {
   isURIError,
 } from "./error.ts";
 export {
+  isFunction,
   isAsyncFunction,
   isAsyncGeneratorFunction,
-  isFunction,
   isGeneratorFunction,
 } from "./function.ts";
 export { isAsyncGenerator, isGenerator } from "./generator.ts";
@@ -43,16 +58,17 @@ export { isAsyncIterable, isIterable } from "./iterable.ts";
 export { isAsyncIterator, isIterator } from "./iterator.ts";
 export { isNil, isNull, isUndefined } from "./nil.ts";
 export {
-  isInvalidNumber,
   isNumber,
-  isNumberObject,
   isValidNumber,
+  isInvalidNumber,
+  isNumberObject,
+  isNumberArray,
 } from "./number.ts";
 export {
-  isEmptyObject,
-  isFullObject,
   isObject,
   isPlainObject,
+  isEmptyObject,
+  isFullObject,
 } from "./object.ts";
 export { isPrimitive } from "./primitive.ts";
 export { isPromise, isPromiseLike } from "./promise.ts";
@@ -62,6 +78,7 @@ export {
   isEmptyString,
   isFullString,
   isStringObject,
+  isStringArray,
 } from "./string.ts";
 export { isSymbol, isSymbolObject } from "./symbol.ts";
-export { getType } from "./type.ts";
+export { getType, getTag } from "./type.ts";

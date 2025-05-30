@@ -1,5 +1,7 @@
 // number
 
+import { getTag } from "./type.ts";
+
 export function isNumber(payload: unknown): payload is number {
   return typeof payload === "number";
 }
@@ -13,5 +15,10 @@ export function isInvalidNumber(payload: unknown): payload is number {
 }
 
 export function isNumberObject(payload: unknown): payload is Number {
-  return payload instanceof Number;
+  return typeof payload === "object" && getTag(payload) === "Number";
+}
+
+// isNumberArray
+export function isNumberArray(payload: unknown): payload is number[] {
+  return Array.isArray(payload) && payload.every((item) => isNumber(item));
 }

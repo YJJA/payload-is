@@ -1,5 +1,7 @@
 // string
 
+import { getTag } from "./type.ts";
+
 export function isString(payload: unknown): payload is string {
   return typeof payload === "string";
 }
@@ -13,5 +15,10 @@ export function isFullString(payload: unknown): payload is string {
 }
 
 export function isStringObject(payload: unknown): payload is String {
-  return payload instanceof String;
+  return typeof payload === "object" && getTag(payload) === "String";
+}
+
+// isStringArray
+export function isStringArray(payload: unknown): payload is string[] {
+  return Array.isArray(payload) && payload.every((item) => isString(item));
 }

@@ -1,7 +1,18 @@
-// Error
+import { getTag } from "./type.ts";
 
+// Error
+interface HasIsError extends ErrorConstructor {
+  isError(error: unknown): error is Error;
+}
 export function isError(payload: unknown): payload is Error {
-  return payload instanceof Error;
+  if (typeof (Error as HasIsError).isError === "function") {
+    return (Error as HasIsError).isError(payload);
+  }
+  return payload instanceof Error || getTag(payload) === "Error";
+}
+
+export function isAggregateError(payload: unknown): payload is AggregateError {
+  return payload instanceof AggregateError;
 }
 
 export function isEvalError(payload: unknown): payload is EvalError {
@@ -31,6 +42,7 @@ export function isURIError(payload: unknown): payload is URIError {
 export function isNativeError(
   payload: unknown
 ): payload is
+  | AggregateError
   | EvalError
   | RangeError
   | ReferenceError
@@ -38,6 +50,7 @@ export function isNativeError(
   | TypeError
   | URIError {
   return (
+    isAggregateError(payload) ||
     isEvalError(payload) ||
     isRangeError(payload) ||
     isReferenceError(payload) ||
