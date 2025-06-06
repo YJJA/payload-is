@@ -27,7 +27,7 @@ describe("collection", () => {
       t.test(key, () => {
         assert.strictEqual(
           isWeakSet(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -50,7 +50,7 @@ describe("collection", () => {
       t.test(key, () => {
         assert.strictEqual(
           isWeakMap(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -63,7 +63,7 @@ describe("collection", () => {
       t.test(key, () => {
         assert.strictEqual(
           isWeakRef(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

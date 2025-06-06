@@ -36,7 +36,7 @@ describe("string", () => {
       t.test(key, () => {
         assert.strictEqual(
           isString(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -49,7 +49,7 @@ describe("string", () => {
       t.test(key, () => {
         assert.strictEqual(
           isEmptyString(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -81,7 +81,7 @@ describe("string", () => {
       t.test(key, () => {
         assert.strictEqual(
           isFullString(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -98,7 +98,7 @@ describe("string", () => {
       t.test(key, () => {
         assert.strictEqual(
           isStringObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

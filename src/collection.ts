@@ -24,7 +24,7 @@ export function isWeakRef(payload: unknown): payload is WeakRef<any> {
 
 // isMapArray
 export function isMapEntries(
-  payload: unknown
+  payload: unknown,
 ): payload is [unknown, unknown][] {
   return (
     Array.isArray(payload) &&

@@ -11,7 +11,7 @@ describe("generator", () => {
       t.test(key, () => {
         assert.strictEqual(
           isGenerator(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -24,7 +24,7 @@ describe("generator", () => {
       t.test(key, () => {
         assert.strictEqual(
           isAsyncGenerator(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

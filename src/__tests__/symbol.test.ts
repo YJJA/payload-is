@@ -11,7 +11,7 @@ describe("symbol", () => {
       t.test(key, () => {
         assert.strictEqual(
           isSymbol(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -24,7 +24,7 @@ describe("symbol", () => {
       t.test(key, () => {
         assert.strictEqual(
           isSymbolObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

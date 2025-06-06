@@ -28,7 +28,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isArrayBuffer(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -41,7 +41,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isSharedArrayBuffer(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -54,7 +54,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isArrayBufferLike(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -67,7 +67,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isDataView(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -80,7 +80,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isInt8Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -93,7 +93,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isUint8Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -106,7 +106,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isUint8ClampedArray(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -119,7 +119,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isInt16Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -132,7 +132,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isUint16Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -145,7 +145,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isInt32Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -158,7 +158,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isUint32Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -171,7 +171,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isFloat32Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -184,7 +184,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isFloat64Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -197,7 +197,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isBigInt64Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -210,7 +210,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isBigUint64Array(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -235,7 +235,7 @@ describe("buffer", () => {
       t.test(key, () => {
         assert.strictEqual(
           isTypedArray(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

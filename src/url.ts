@@ -7,7 +7,7 @@ export function isURL(payload: unknown): payload is URL {
 
 // URLSearchParams
 export function isURLSearchParams(
-  payload: unknown
+  payload: unknown,
 ): payload is URLSearchParams {
   return getTag(payload) === "URLSearchParams";
 }

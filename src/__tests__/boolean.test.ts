@@ -11,7 +11,7 @@ describe("boolean", () => {
       t.test(key, () => {
         assert.strictEqual(
           isBoolean(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -48,7 +48,7 @@ describe("boolean", () => {
       t.test(key, () => {
         assert.strictEqual(
           isBooleanObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

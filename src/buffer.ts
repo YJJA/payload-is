@@ -7,19 +7,19 @@ export function isArrayBuffer(payload: unknown): payload is ArrayBuffer {
 }
 
 export function isSharedArrayBuffer(
-  payload: unknown
+  payload: unknown,
 ): payload is SharedArrayBuffer {
   return getTag(payload) === "SharedArrayBuffer";
 }
 
 export function isArrayBufferLike(
-  payload: unknown
+  payload: unknown,
 ): payload is ArrayBufferLike {
   return isArrayBuffer(payload) || isSharedArrayBuffer(payload);
 }
 
 export function isArrayBufferView(
-  payload: unknown
+  payload: unknown,
 ): payload is ArrayBufferView {
   return ArrayBuffer.isView(payload);
 }
@@ -37,7 +37,7 @@ export function isUint8Array(payload: unknown): payload is Uint8Array {
   return getTag(payload) === "Uint8Array";
 }
 export function isUint8ClampedArray(
-  payload: unknown
+  payload: unknown,
 ): payload is Uint8ClampedArray {
   return getTag(payload) === "Uint8ClampedArray";
 }
@@ -67,7 +67,7 @@ export function isBigUint64Array(payload: unknown): payload is BigUint64Array {
 }
 
 export function isTypedArray(
-  payload: unknown
+  payload: unknown,
 ): payload is
   | Int8Array
   | Uint8Array

@@ -39,7 +39,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isEvalError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -52,7 +52,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isRangeError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -65,7 +65,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isReferenceError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -78,7 +78,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isSyntaxError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -91,7 +91,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isTypeError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -104,7 +104,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isURIError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -124,7 +124,7 @@ describe("error", () => {
       t.test(key, () => {
         assert.strictEqual(
           isNativeError(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

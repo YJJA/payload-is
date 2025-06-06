@@ -19,7 +19,7 @@ describe("iterator", () => {
       t.test(key, () => {
         assert.strictEqual(
           isIterator(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -32,7 +32,7 @@ describe("iterator", () => {
       t.test(key, () => {
         assert.strictEqual(
           isAsyncIterator(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

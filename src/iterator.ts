@@ -16,7 +16,7 @@ export function isIterator(payload: unknown): payload is Iterator<any> {
 
 // AsyncIterator
 export function isAsyncIterator(
-  payload: unknown
+  payload: unknown,
 ): payload is AsyncIterator<any> {
   return (
     typeof Symbol !== "undefined" &&

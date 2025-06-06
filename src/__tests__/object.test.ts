@@ -132,7 +132,7 @@ describe("object", () => {
       t.test(key, () => {
         assert.strictEqual(
           isObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -160,7 +160,7 @@ describe("object", () => {
       t.test(key, () => {
         assert.strictEqual(
           isPlainObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -182,7 +182,7 @@ describe("object", () => {
       t.test(key, () => {
         assert.strictEqual(
           isEmptyObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -203,7 +203,7 @@ describe("object", () => {
       t.test(key, () => {
         assert.strictEqual(
           isFullObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

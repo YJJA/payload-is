@@ -21,7 +21,7 @@ describe("date", () => {
       t.test(key, () => {
         assert.strictEqual(
           isValidDate(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -34,7 +34,7 @@ describe("date", () => {
       t.test(key, () => {
         assert.strictEqual(
           isInvalidDate(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

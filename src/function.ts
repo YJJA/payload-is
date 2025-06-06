@@ -13,14 +13,14 @@ export function isAsyncFunction(payload: unknown): payload is AnyAsyncFunction {
 
 // GeneratorFunction
 export function isGeneratorFunction(
-  payload: unknown
+  payload: unknown,
 ): payload is GeneratorFunction {
   return getTag(payload) === "GeneratorFunction";
 }
 
 // AsyncGeneratorFunction
 export function isAsyncGeneratorFunction(
-  payload: unknown
+  payload: unknown,
 ): payload is AsyncGeneratorFunction {
   return getTag(payload) === "AsyncGeneratorFunction";
 }

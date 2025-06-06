@@ -40,7 +40,7 @@ describe("array", () => {
       t.test(key, () => {
         assert.strictEqual(
           isEmptyArray(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -63,7 +63,7 @@ describe("array", () => {
       t.test(key, () => {
         assert.strictEqual(
           isFullArray(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

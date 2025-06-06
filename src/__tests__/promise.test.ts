@@ -15,7 +15,7 @@ describe("promise", () => {
       t.test(key, () => {
         assert.strictEqual(
           isPromise(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -33,7 +33,7 @@ describe("promise", () => {
       t.test(key, () => {
         assert.strictEqual(
           isPromiseLike(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

@@ -11,7 +11,7 @@ describe("nil", () => {
       t.test(key, () => {
         assert.strictEqual(
           isUndefined(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

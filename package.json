@@ -10,6 +10,7 @@
     "build": "builder-esbuild",
     "check-types": "tsc --noEmit",
     "clean": "del lib",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
     "test": "node --test './src/__tests__/*.test.*'",
     "prepublishOnly": "pnpm run test && pnpm run build"
   },

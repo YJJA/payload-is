@@ -11,7 +11,7 @@ describe("bigint", () => {
       t.test(key, () => {
         assert.strictEqual(
           isBigInt(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -24,7 +24,7 @@ describe("bigint", () => {
       t.test(key, () => {
         assert.strictEqual(
           isBigIntObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

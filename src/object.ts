@@ -21,7 +21,7 @@ export function isPlainObject(payload: unknown): payload is PlainObject {
 }
 
 export function isEmptyObject(
-  payload: unknown
+  payload: unknown,
 ): payload is { [K in any]: never } {
   return isPlainObject(payload) && Object.keys(payload).length === 0;
 }

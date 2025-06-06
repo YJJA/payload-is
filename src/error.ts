@@ -40,7 +40,7 @@ export function isURIError(payload: unknown): payload is URIError {
 }
 
 export function isNativeError(
-  payload: unknown
+  payload: unknown,
 ): payload is
   | AggregateError
   | EvalError

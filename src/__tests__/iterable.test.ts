@@ -58,7 +58,7 @@ describe("iterable", () => {
       t.test(key, () => {
         assert.strictEqual(
           isIterable(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -71,7 +71,7 @@ describe("iterable", () => {
       t.test(key, () => {
         assert.strictEqual(
           isAsyncIterable(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

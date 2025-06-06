@@ -30,7 +30,7 @@ describe("function", () => {
       t.test(key, () => {
         assert.strictEqual(
           isFunction(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -43,7 +43,7 @@ describe("function", () => {
       t.test(key, () => {
         assert.strictEqual(
           isAsyncFunction(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -56,7 +56,7 @@ describe("function", () => {
       t.test(key, () => {
         assert.strictEqual(
           isGeneratorFunction(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -69,7 +69,7 @@ describe("function", () => {
       t.test(key, () => {
         assert.strictEqual(
           isAsyncGeneratorFunction(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

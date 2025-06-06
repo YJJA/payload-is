@@ -15,7 +15,7 @@ describe("regexp", () => {
       t.test(key, () => {
         assert.strictEqual(
           isRegExp(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

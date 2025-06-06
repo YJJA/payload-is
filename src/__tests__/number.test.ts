@@ -24,7 +24,7 @@ describe("number", () => {
       t.test(key, () => {
         assert.strictEqual(
           isNumber(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -44,7 +44,7 @@ describe("number", () => {
       t.test(key, () => {
         assert.strictEqual(
           isValidNumber(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -57,7 +57,7 @@ describe("number", () => {
       t.test(key, () => {
         assert.strictEqual(
           isInvalidNumber(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
@@ -74,7 +74,7 @@ describe("number", () => {
       t.test(key, () => {
         assert.strictEqual(
           isNumberObject(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }

@@ -14,7 +14,7 @@ export function isIterable(payload: unknown): payload is Iterable<any> {
 
 // AsyncIterable
 export function isAsyncIterable(
-  payload: unknown
+  payload: unknown,
 ): payload is AsyncIterable<any> {
   return (
     typeof Symbol !== "undefined" &&

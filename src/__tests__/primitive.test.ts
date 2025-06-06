@@ -57,7 +57,7 @@ describe("primitive", () => {
       t.test(key, () => {
         assert.strictEqual(
           isPrimitive(val),
-          trueKeys.includes(key as TestDataKey)
+          trueKeys.includes(key as TestDataKey),
         );
       });
     }
