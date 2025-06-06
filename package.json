@@ -217,8 +217,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@tscb/builder-esbuild": "^0.2.1",
-    "@tscb/tsconfig": "^0.2.1",
+    "@tscb/builder-esbuild": "^0.2.2",
+    "@tscb/tsconfig": "^0.2.2",
     "@types/node": "^22.14.0",
     "del-cli": "^6.0.0",
     "prettier": "3.5.3",
