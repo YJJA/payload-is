@@ -83,5 +83,14 @@ export {
 export { isSymbol, isSymbolObject } from "./symbol.ts";
 export { getType, getTag } from "./type.ts";
 export { getDataType } from "./dataType.ts";
-export { isPropertyKey, enumerableKeys } from "./key.ts";
+export { isWeakKey, isPropertyKey, enumerableKeys } from "./key.ts";
 export { hasFromJSON, hasToJSON } from "./has.ts";
+
+export type {
+  PrimitiveType,
+  PlainObject,
+  AnyAsyncFunction,
+  AnyFunction,
+  AnyClass,
+  DataTypeResult,
+} from "./type.ts";

@@ -1,6 +1,12 @@
 import { isNumber } from "./number.ts";
+import { isObject } from "./object.ts";
 import { isString } from "./string.ts";
 import { isSymbol } from "./symbol.ts";
+
+// isWeakKey
+export function isWeakKey(payload: unknown): payload is WeakKey {
+  return isObject(payload) || isSymbol(payload);
+}
 
 // isPropertyKey
 export function isPropertyKey(payload: unknown): payload is PropertyKey {
