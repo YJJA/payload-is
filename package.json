@@ -1,6 +1,6 @@
 {
   "name": "payload-is",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "A comprehensive TypeScript/JavaScript type checking library providing functions to check data types, collections, primitives, and built-in objects",
   "type": "module",
   "x-build": {
