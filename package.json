@@ -4,7 +4,8 @@
   "description": "A comprehensive TypeScript/JavaScript type checking library providing functions to check data types, collections, primitives, and built-in objects",
   "type": "module",
   "x-build": {
-    "exports": "./src/*.ts"
+    "exports": "./src/*.ts",
+    "clean": true
   },
   "scripts": {
     "build": "builder-esbuild",
@@ -216,8 +217,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@tscb/builder-esbuild": "^0.1.0",
-    "@tscb/tsconfig": "^0.0.0",
+    "@tscb/builder-esbuild": "^0.2.1",
+    "@tscb/tsconfig": "^0.2.1",
     "@types/node": "^22.14.0",
     "del-cli": "^6.0.0",
     "prettier": "3.5.3",
