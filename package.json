@@ -1,29 +1,13 @@
 {
   "name": "payload-is",
   "version": "0.3.3",
-  "description": "javascript data check, supported typescript",
+  "description": "A comprehensive TypeScript/JavaScript type checking library providing functions to check data types, collections, primitives, and built-in objects",
   "type": "module",
-  "main": "./lib/commonjs/index.cjs",
-  "module": "./lib/esm/index.js",
-  "types": "./lib/types/index.d.ts",
-  "source": "./src/index.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/types/index.d.ts",
-        "default": "./lib/esm/index.js"
-      },
-      "require": {
-        "types": "./lib/types/index.d.ts",
-        "default": "./lib/commonjs/index.cjs"
-      }
-    },
-    "./package.json": "./package.json"
+  "x-build": {
+    "exports": "./src/*.ts"
   },
   "scripts": {
-    "build:types": "tsc -p tsconfig.types.json",
-    "build:js": "rollup -c",
-    "build": "pnpm run clean && pnpm run build:types && pnpm run build:js",
+    "build": "builder-esbuild",
     "check-types": "tsc --noEmit",
     "clean": "del lib",
     "test": "node --test './src/__tests__/*.test.*'",
@@ -35,11 +19,187 @@
     "!**/__tests__",
     "!**/__test_utils__"
   ],
+  "main": "./lib/commonjs/index.cjs",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/types/index.d.ts",
+  "source": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/commonjs/index.cjs",
+      "default": "./lib/commonjs/index.cjs"
+    },
+    "./array": {
+      "types": "./lib/types/array.d.ts",
+      "import": "./lib/esm/array.js",
+      "require": "./lib/commonjs/array.cjs",
+      "default": "./lib/commonjs/array.cjs"
+    },
+    "./bigint": {
+      "types": "./lib/types/bigint.d.ts",
+      "import": "./lib/esm/bigint.js",
+      "require": "./lib/commonjs/bigint.cjs",
+      "default": "./lib/commonjs/bigint.cjs"
+    },
+    "./boolean": {
+      "types": "./lib/types/boolean.d.ts",
+      "import": "./lib/esm/boolean.js",
+      "require": "./lib/commonjs/boolean.cjs",
+      "default": "./lib/commonjs/boolean.cjs"
+    },
+    "./buffer": {
+      "types": "./lib/types/buffer.d.ts",
+      "import": "./lib/esm/buffer.js",
+      "require": "./lib/commonjs/buffer.cjs",
+      "default": "./lib/commonjs/buffer.cjs"
+    },
+    "./classes": {
+      "types": "./lib/types/classes.d.ts",
+      "import": "./lib/esm/classes.js",
+      "require": "./lib/commonjs/classes.cjs",
+      "default": "./lib/commonjs/classes.cjs"
+    },
+    "./collection": {
+      "types": "./lib/types/collection.d.ts",
+      "import": "./lib/esm/collection.js",
+      "require": "./lib/commonjs/collection.cjs",
+      "default": "./lib/commonjs/collection.cjs"
+    },
+    "./dataType": {
+      "types": "./lib/types/dataType.d.ts",
+      "import": "./lib/esm/dataType.js",
+      "require": "./lib/commonjs/dataType.cjs",
+      "default": "./lib/commonjs/dataType.cjs"
+    },
+    "./date": {
+      "types": "./lib/types/date.d.ts",
+      "import": "./lib/esm/date.js",
+      "require": "./lib/commonjs/date.cjs",
+      "default": "./lib/commonjs/date.cjs"
+    },
+    "./dom": {
+      "types": "./lib/types/dom.d.ts",
+      "import": "./lib/esm/dom.js",
+      "require": "./lib/commonjs/dom.cjs",
+      "default": "./lib/commonjs/dom.cjs"
+    },
+    "./error": {
+      "types": "./lib/types/error.d.ts",
+      "import": "./lib/esm/error.js",
+      "require": "./lib/commonjs/error.cjs",
+      "default": "./lib/commonjs/error.cjs"
+    },
+    "./function": {
+      "types": "./lib/types/function.d.ts",
+      "import": "./lib/esm/function.js",
+      "require": "./lib/commonjs/function.cjs",
+      "default": "./lib/commonjs/function.cjs"
+    },
+    "./generator": {
+      "types": "./lib/types/generator.d.ts",
+      "import": "./lib/esm/generator.js",
+      "require": "./lib/commonjs/generator.cjs",
+      "default": "./lib/commonjs/generator.cjs"
+    },
+    "./has": {
+      "types": "./lib/types/has.d.ts",
+      "import": "./lib/esm/has.js",
+      "require": "./lib/commonjs/has.cjs",
+      "default": "./lib/commonjs/has.cjs"
+    },
+    "./iterable": {
+      "types": "./lib/types/iterable.d.ts",
+      "import": "./lib/esm/iterable.js",
+      "require": "./lib/commonjs/iterable.cjs",
+      "default": "./lib/commonjs/iterable.cjs"
+    },
+    "./iterator": {
+      "types": "./lib/types/iterator.d.ts",
+      "import": "./lib/esm/iterator.js",
+      "require": "./lib/commonjs/iterator.cjs",
+      "default": "./lib/commonjs/iterator.cjs"
+    },
+    "./key": {
+      "types": "./lib/types/key.d.ts",
+      "import": "./lib/esm/key.js",
+      "require": "./lib/commonjs/key.cjs",
+      "default": "./lib/commonjs/key.cjs"
+    },
+    "./nil": {
+      "types": "./lib/types/nil.d.ts",
+      "import": "./lib/esm/nil.js",
+      "require": "./lib/commonjs/nil.cjs",
+      "default": "./lib/commonjs/nil.cjs"
+    },
+    "./number": {
+      "types": "./lib/types/number.d.ts",
+      "import": "./lib/esm/number.js",
+      "require": "./lib/commonjs/number.cjs",
+      "default": "./lib/commonjs/number.cjs"
+    },
+    "./object": {
+      "types": "./lib/types/object.d.ts",
+      "import": "./lib/esm/object.js",
+      "require": "./lib/commonjs/object.cjs",
+      "default": "./lib/commonjs/object.cjs"
+    },
+    "./primitive": {
+      "types": "./lib/types/primitive.d.ts",
+      "import": "./lib/esm/primitive.js",
+      "require": "./lib/commonjs/primitive.cjs",
+      "default": "./lib/commonjs/primitive.cjs"
+    },
+    "./promise": {
+      "types": "./lib/types/promise.d.ts",
+      "import": "./lib/esm/promise.js",
+      "require": "./lib/commonjs/promise.cjs",
+      "default": "./lib/commonjs/promise.cjs"
+    },
+    "./regexp": {
+      "types": "./lib/types/regexp.d.ts",
+      "import": "./lib/esm/regexp.js",
+      "require": "./lib/commonjs/regexp.cjs",
+      "default": "./lib/commonjs/regexp.cjs"
+    },
+    "./string": {
+      "types": "./lib/types/string.d.ts",
+      "import": "./lib/esm/string.js",
+      "require": "./lib/commonjs/string.cjs",
+      "default": "./lib/commonjs/string.cjs"
+    },
+    "./symbol": {
+      "types": "./lib/types/symbol.d.ts",
+      "import": "./lib/esm/symbol.js",
+      "require": "./lib/commonjs/symbol.cjs",
+      "default": "./lib/commonjs/symbol.cjs"
+    },
+    "./type": {
+      "types": "./lib/types/type.d.ts",
+      "import": "./lib/esm/type.js",
+      "require": "./lib/commonjs/type.cjs",
+      "default": "./lib/commonjs/type.cjs"
+    },
+    "./url": {
+      "types": "./lib/types/url.d.ts",
+      "import": "./lib/esm/url.js",
+      "require": "./lib/commonjs/url.cjs",
+      "default": "./lib/commonjs/url.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "keywords": [
-    "javascript type check",
-    "typescript data check",
-    "isObject",
-    "isPlainObject"
+    "typescript",
+    "javascript",
+    "type-check",
+    "type-guard",
+    "validation",
+    "array",
+    "object",
+    "primitive",
+    "collections",
+    "data-types",
+    "type-testing"
   ],
   "homepage": "https://github.com/YJJA/payload-is.git#readme",
   "repository": {
@@ -55,18 +215,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.27.4",
-    "@babel/plugin-transform-runtime": "^7.27.4",
-    "@babel/preset-env": "^7.27.2",
-    "@babel/preset-typescript": "^7.27.1",
-    "@rollup/plugin-babel": "^6.0.4",
+    "@tscb/builder-esbuild": "^0.1.0",
+    "@tscb/tsconfig": "^0.0.0",
     "@types/node": "^22.14.0",
     "del-cli": "^6.0.0",
-    "glob": "^11.0.2",
-    "rollup": "^4.41.1",
+    "prettier": "3.5.3",
     "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.27.4"
   }
 }

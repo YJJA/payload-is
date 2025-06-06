@@ -1,24 +1,4 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "lib": ["DOM", "ESNext"],
-    "target": "ESNext",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-
-    "skipLibCheck": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "noUncheckedIndexedAccess": true,
-
-    "noEmit": true,
-    "noEmitOnError": true,
-    "esModuleInterop": true,
-    "rewriteRelativeImportExtensions": true,
-    "erasableSyntaxOnly": true,
-    "forceConsistentCasingInFileNames": true
-  }
+  "extends": "@tscb/tsconfig/base.json"
 }

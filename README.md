@@ -1,9 +1,10 @@
 <p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+  <a href="https://github.com/YJJA/payload-is" rel="noopener">
+    <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo">
+  </a>
 </p>
 
-<h3 align="center">Payload is ?</h3>
+<h3 align="center">Payload-is</h3>
 
 <div align="center">
 
@@ -16,138 +17,165 @@
 
 ---
 
-<p align="center"> Javascript Data Check (Typescript)
-    <br> 
+<p align="center">
+  <b>轻量级、无依赖的 JavaScript/TypeScript 数据类型校验工具库</b><br>
+  <i>Simple, dependency-free data type checking for JavaScript & TypeScript</i>
 </p>
 
-## 📝 Table of Contents
+## 📝 目录
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Authors](#authors)
+- [简介](#about)
+- [快速开始](#getting_started)
+- [用法示例](#usage)
+- [作者](#authors)
 
-## 🧐 About <a name = "about"></a>
+## 🧐 简介 <a name = "about"></a>
 
-简洁的 JS （Javascript）数据校验方法。支持 Typescript。无其他依赖。
+Payload-is 提供了一套简洁、直观的 JS/TS 数据类型校验方法，无任何第三方依赖，适用于多种场景。
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 快速开始 <a name = "getting_started"></a>
 
-### Installing
+### 安装
 
-```
+```bash
 npm install payload-is
 ```
 
-## Usage <a name = "usage"></a>
+## 用法示例 <a name = "usage"></a>
 
 ```js
-import { isObject, isPlainObject } from "payload-is";
+import {
+  isArray,
+  isEmptyArray,
+  isFullArray,
+  isBigInt,
+  isBigIntObject,
+  isBigIntArray,
+  isBoolean,
+  isTrue,
+  isFalse,
+  isBooleanObject,
+  isArrayBuffer,
+  isSharedArrayBuffer,
+  isArrayBufferLike,
+  isArrayBufferView,
+  isDataView,
+  isInt8Array,
+  isUint8Array,
+  isUint8ClampedArray,
+  isInt16Array,
+  isUint16Array,
+  isInt32Array,
+  isUint32Array,
+  isFloat32Array,
+  isFloat64Array,
+  isBigInt64Array,
+  isBigUint64Array,
+  isTypedArray,
+  isSet,
+  isMap,
+  isWeakSet,
+  isWeakMap,
+  isWeakRef,
+  isMapEntries,
+  isDate,
+  isValidDate,
+  isInvalidDate,
+  isBlob,
+  isFile,
+  isFormData,
+  isHeaders,
+  isRequest,
+  isResponse,
+  isError,
+  isAggregateError,
+  isEvalError,
+  isNativeError,
+  isRangeError,
+  isReferenceError,
+  isSyntaxError,
+  isTypeError,
+  isURIError,
+  isFunction,
+  isAsyncFunction,
+  isAsyncGeneratorFunction,
+  isGeneratorFunction,
+  isAsyncGenerator,
+  isGenerator,
+  isAsyncIterable,
+  isIterable,
+  isAsyncIterator,
+  isIterator,
+  isNil,
+  isNull,
+  isUndefined,
+  isNumber,
+  isValidNumber,
+  isInvalidNumber,
+  isNumberObject,
+  isNumberArray,
+  isObject,
+  isPlainObject,
+  isEmptyObject,
+  isFullObject,
+  isPrimitive,
+  isPromise,
+  isPromiseLike,
+  isRegExp,
+  isString,
+  isEmptyString,
+  isFullString,
+  isStringObject,
+  isStringArray,
+  isSymbol,
+  isSymbolObject,
+  getType,
+  getTag,
+  getDataType,
+  isWeakKey,
+  isPropertyKey,
+  enumerableKeys,
+  hasFromJSON,
+  hasToJSON,
+} from "payload-is";
 ```
 
+### 常用示例
+
+#### 数组
+
 ```js
-// array
 isArray([]); // true
 isEmptyArray([]); // true
 isFullArray([1]); // true
+```
 
-// bigint
+#### BigInt
+
+```js
 isBigInt(1n); // true
 isBigIntObject(Object(1n)); // true
+isBigIntArray([1n, 2n]); // true
+```
 
-// boolean
+#### 布尔值
+
+```js
 isBoolean(true); // true
 isBooleanObject(new Boolean(true)); // true
 isTrue(true); // true
 isFalse(false); // true
+```
 
-// collection
-isSet(new Set()); // true
-isMap(new Map()); // true
-isWeakSet(new WeakSet()); // true
-isWeakMap(new WeakMap()); // true
-isWeakRef(new WeakRef()); // true
+#### Buffer & TypedArray
 
-// date
-isDate(new Date()); //true
-isValidDate(new Date(2022, 2, 22)); // true
-isInvalidDate(new Date("InvalidDate")); // true
-
-// error
-isError(new Error("mesage")); //true
-isEvalError(new EvalError("mesage"));
-isRangeError(new RangeError("mesage"));
-isReferenceError(new ReferenceError("mesage"));
-isSyntaxError(new SyntaxError("mesage"));
-isTypeError(new TypeError("mesage"));
-isURIError(new URIError("mesage"));
-
-// EvalError,RangeError,ReferenceError,SyntaxError,TypeError,URIError,
-isNativeError(new SyntaxError("message")); // true
-
-// function
-isFunction(function () {}); // true;
-isAsyncFunction(async function () {}); // true
-isAsyncGeneratorFunction(async function* () {}); // true
-isGeneratorFunction(function* () {}); // true
-
-// generator
-isGenerator((function* () {})()); // true
-isAsyncGenerator((async function* () {})()); // true
-
-// iterable
-isIterable(new Set()); // true
-isIterable(new Map()); // true
-isAsyncIterable((async function* () {})()); // true
-
-// nil
-isNil(null); // true
-isNil(undefined); // true
-isNull(null); // true
-isUndefined(undefined); // true
-
-// number
-isNumber(10); // true
-isValidNumber(10); // true
-isInvalidNumber(NAN); // true
-isNumberObject(new Number(10)); // true
-
-// object
-isObject({}); // true
-isPlainObject({}); // true
-isEmptyObject({}); // true
-isFullObject({ key: "abc" }); // true
-
-// primitive
-isPrimitive(1); // true
-isPrimitive(null); // true
-isPrimitive(undefined); // true
-
-// promise
-isPromise(new Promise(() => {})); // true
-isPromiseLike({ then() {} }); // true
-
-// regexp
-isRegExp(/\d+/); // true
-isRegExp(new RegExp("abc")); // true
-
-// string
-isString(""); // true
-isEmptyString(""); // true
-isFullString(" "); // true
-isStringObject(new String("")); // true
-
-// symbol
-isSymbol(Symbol()); // true
-isSymbolObject(Object(Symbol("object"))); // true
-
-// buffer
+```js
 isArrayBuffer(new ArrayBuffer(32)); // true
 isSharedArrayBuffer(new SharedArrayBuffer(32)); // true
 isArrayBufferLike(new ArrayBuffer(32)); // true
 isArrayBufferLike(new SharedArrayBuffer(32)); // true
+isArrayBufferView(new Uint8Array(8)); // true
 isDataView(new DataView(new ArrayBuffer(32))); // true
-
 isInt8Array(new Int8Array(32)); // true
 isUint8Array(new Uint8Array(32)); // true
 isUint8ClampedArray(new Uint8ClampedArray(32)); // true
@@ -159,17 +187,178 @@ isFloat32Array(new Float32Array(32)); // true
 isFloat64Array(new Float64Array(32)); // true
 isBigInt64Array(new BigInt64Array(32)); // true
 isBigUint64Array(new BigUint64Array(32)); // true
-
-// Int8Array | Uint8Array | Uint8ClampedArray | Int16Array | Uint16Array Int32Array | Uint32Array | Float32Array | Float64Array | BigInt64Array | BigUint64Array
 isTypedArray(new Int8Array(32)); // true
 ```
 
-## 🔧 Running the tests <a name = "tests"></a>
+#### 集合
 
 ```js
+isSet(new Set()); // true
+isMap(new Map()); // true
+isWeakSet(new WeakSet()); // true
+isWeakMap(new WeakMap()); // true
+isWeakRef(new WeakRef({})); // true
+isMapEntries([
+  [1, 2],
+  [3, 4],
+]); // true
+```
+
+#### 日期
+
+```js
+isDate(new Date()); // true
+isValidDate(new Date(2022, 2, 22)); // true
+isInvalidDate(new Date("invalid")); // true
+```
+
+#### DOM
+
+```js
+isBlob(new Blob()); // true
+isFile(new File([], "a.txt")); // true
+isFormData(new FormData()); // true
+isHeaders(new Headers()); // true
+isRequest(new Request("https://example.com")); // true
+isResponse(new Response()); // true
+```
+
+#### 错误对象
+
+```js
+isError(new Error()); // true
+isAggregateError(new AggregateError([])); // true
+isEvalError(new EvalError()); // true
+isRangeError(new RangeError()); // true
+isReferenceError(new ReferenceError()); // true
+isSyntaxError(new SyntaxError()); // true
+isTypeError(new TypeError()); // true
+isURIError(new URIError()); // true
+isNativeError(new TypeError()); // true
+```
+
+#### 函数
+
+```js
+isFunction(function () {}); // true
+isAsyncFunction(async function () {}); // true
+isGeneratorFunction(function* () {}); // true
+isAsyncGeneratorFunction(async function* () {}); // true
+```
+
+#### Generator
+
+```js
+isGenerator((function* () {})()); // true
+isAsyncGenerator((async function* () {})()); // true
+```
+
+#### 可迭代对象 & 迭代器
+
+```js
+isIterable([]); // true
+isAsyncIterable((async function* () {})()); // true
+isIterator([].values()); // true
+isAsyncIterator((async function* () {})()); // true
+```
+
+#### Nil
+
+```js
+isNil(null); // true
+isNil(undefined); // true
+isNull(null); // true
+isUndefined(undefined); // true
+```
+
+#### 数字
+
+```js
+isNumber(10); // true
+isValidNumber(10); // true
+isInvalidNumber(NaN); // true
+isNumberObject(new Number(10)); // true
+isNumberArray([1, 2, 3]); // true
+```
+
+#### 对象
+
+```js
+isObject({}); // true
+isPlainObject({}); // true
+isEmptyObject({}); // true
+isFullObject({ a: 1 }); // true
+```
+
+#### 原始类型
+
+```js
+isPrimitive(1); // true
+isPrimitive(null); // true
+isPrimitive(undefined); // true
+```
+
+#### Promise
+
+```js
+isPromise(Promise.resolve()); // true
+isPromiseLike({ then() {} }); // true
+```
+
+#### 正则表达式
+
+```js
+isRegExp(/abc/); // true
+```
+
+#### 字符串
+
+```js
+isString(""); // true
+isEmptyString(""); // true
+isFullString("abc"); // true
+isStringObject(new String("abc")); // true
+isStringArray(["a", "b"]); // true
+```
+
+#### Symbol
+
+```js
+isSymbol(Symbol()); // true
+isSymbolObject(Object(Symbol())); // true
+```
+
+#### 键 & 属性
+
+```js
+isWeakKey({}); // true
+isPropertyKey("a"); // true
+enumerableKeys({ a: 1, b: 2 }); // ['a','b']
+```
+
+#### JSON 辅助
+
+```js
+hasToJSON({
+  toJSON() {
+    return 1;
+  },
+}); // true
+hasFromJSON(
+  class {
+    static fromJSON() {
+      return new this();
+    }
+  },
+); // true
+```
+
+## 🔧 测试 <a name = "tests"></a>
+
+```bash
 npm run test
 ```
 
-## ✍️ Authors <a name = "authors"></a>
+## ✍️ 作者 <a name = "authors"></a>
 
-- [@Hong Liu](https://github.com/YJJA) - Idea & Initial work
+- [@Hong Liu](https://github.com/YJJA) - 创意 & 初始开发
