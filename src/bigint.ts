@@ -1,5 +1,4 @@
 // BigInt
-
 import { getTag } from "./type.ts";
 
 export function isBigInt(payload: unknown): payload is bigint {

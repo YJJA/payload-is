@@ -1,5 +1,5 @@
-import { test } from "node:test";
 import assert from "node:assert/strict";
+import { test } from "node:test";
 import { getDataType } from "../dataType.ts";
 
 test("getDataType", async (t) => {

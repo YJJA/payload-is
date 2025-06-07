@@ -1,5 +1,4 @@
 // primitive
-
 import type { PrimitiveType } from "./type.ts";
 
 export function isPrimitive(payload: unknown): payload is PrimitiveType {

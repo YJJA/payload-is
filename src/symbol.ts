@@ -1,5 +1,4 @@
 // symbol
-
 import { getTag } from "./type.ts";
 
 export function isSymbol(payload: unknown): payload is symbol {

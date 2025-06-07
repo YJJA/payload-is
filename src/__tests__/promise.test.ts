@@ -1,5 +1,5 @@
-import { it, describe } from "node:test";
 import assert from "node:assert/strict";
+import { it, describe } from "node:test";
 import { TestData, type TestDataKey } from "../__test_utils__/test-data.ts";
 import { isPromise, isPromiseLike } from "../promise.ts";
 

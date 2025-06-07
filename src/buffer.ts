@@ -1,5 +1,4 @@
 // Buffer
-
 import { getTag } from "./type.ts";
 
 export function isArrayBuffer(payload: unknown): payload is ArrayBuffer {

@@ -1,5 +1,4 @@
 // collection
-
 import { getTag } from "./type.ts";
 
 export function isSet(payload: unknown): payload is Set<any> {

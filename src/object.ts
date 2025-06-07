@@ -1,5 +1,4 @@
 // object
-
 import type { PlainObject } from "./type.ts";
 
 export function isObject(payload: unknown): payload is object {

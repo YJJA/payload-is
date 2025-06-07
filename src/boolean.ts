@@ -1,5 +1,4 @@
 // boolean
-
 import { getTag } from "./type.ts";
 
 export function isBoolean(payload: unknown): payload is boolean {

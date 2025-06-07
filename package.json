@@ -2,29 +2,33 @@
   "name": "payload-is",
   "version": "0.4.0",
   "description": "A comprehensive TypeScript/JavaScript type checking library providing functions to check data types, collections, primitives, and built-in objects",
-  "type": "module",
-  "x-build": {
-    "exports": "./src/*.ts",
-    "clean": true
-  },
-  "scripts": {
-    "build": "builder-esbuild",
-    "check-types": "tsc --noEmit",
-    "clean": "del lib",
-    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
-    "test": "node --test './src/__tests__/*.test.*'",
-    "prepublishOnly": "pnpm run test && pnpm run build"
-  },
-  "files": [
-    "src",
-    "lib",
-    "!**/__tests__",
-    "!**/__test_utils__"
+  "keywords": [
+    "typescript",
+    "javascript",
+    "type-check",
+    "type-guard",
+    "validation",
+    "array",
+    "object",
+    "primitive",
+    "collections",
+    "data-types",
+    "type-testing"
   ],
-  "main": "./lib/commonjs/index.cjs",
-  "module": "./lib/esm/index.js",
-  "types": "./lib/types/index.d.ts",
-  "source": "./src/index.ts",
+  "homepage": "https://github.com/YJJA/payload-is.git#readme",
+  "bugs": {
+    "url": "https://github.com/YJJA/payload-is.git/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YJJA/payload-is.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Liu Hong",
+    "email": "hongdoit@icloud.com"
+  },
+  "type": "module",
   "exports": {
     ".": {
       "types": "./lib/types/index.d.ts",
@@ -190,38 +194,36 @@
     },
     "./package.json": "./package.json"
   },
-  "keywords": [
-    "typescript",
-    "javascript",
-    "type-check",
-    "type-guard",
-    "validation",
-    "array",
-    "object",
-    "primitive",
-    "collections",
-    "data-types",
-    "type-testing"
+  "main": "./lib/commonjs/index.cjs",
+  "module": "./lib/esm/index.js",
+  "source": "./src/index.ts",
+  "types": "./lib/types/index.d.ts",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__test_utils__"
   ],
-  "homepage": "https://github.com/YJJA/payload-is.git#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/YJJA/payload-is.git"
+  "scripts": {
+    "build": "builder-esbuild",
+    "check-types": "tsc --noEmit",
+    "clean": "del lib",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "prepublishOnly": "pnpm run test && pnpm run build",
+    "test": "node --test './src/__tests__/*.test.*'"
   },
-  "bugs": {
-    "url": "https://github.com/YJJA/payload-is.git/issues"
-  },
-  "author": {
-    "name": "Liu Hong",
-    "email": "hongdoit@icloud.com"
-  },
-  "license": "MIT",
   "devDependencies": {
-    "@tscb/builder-esbuild": "^0.2.2",
-    "@tscb/tsconfig": "^0.2.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@tscb/builder-esbuild": "^0.3.2",
+    "@tscb/tsconfig": "^0.3.2",
     "@types/node": "^22.14.0",
     "del-cli": "^6.0.0",
     "prettier": "3.5.3",
+    "prettier-plugin-packagejson": "^2.5.15",
     "typescript": "^5.8.3"
+  },
+  "x-build": {
+    "exports": "./src/*.ts",
+    "clean": true
   }
 }

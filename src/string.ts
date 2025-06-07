@@ -1,5 +1,4 @@
 // string
-
 import { getTag } from "./type.ts";
 
 export function isString(payload: unknown): payload is string {

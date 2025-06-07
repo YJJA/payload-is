@@ -1,5 +1,4 @@
 // date
-
 import { getTag } from "./type.ts";
 
 export function isDate(payload: unknown): payload is Date {

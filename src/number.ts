@@ -1,5 +1,4 @@
 // number
-
 import { getTag } from "./type.ts";
 
 export function isNumber(payload: unknown): payload is number {

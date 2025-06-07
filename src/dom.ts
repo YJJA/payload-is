@@ -1,5 +1,4 @@
 // dom
-
 import { getTag } from "./type.ts";
 
 // Blob
